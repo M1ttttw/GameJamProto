@@ -72,13 +72,16 @@ public class RangeBehavior : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        // Find the object in our targets and remove it.
-        int i = 0;
-        while (i < targets.Count && !GameObject.ReferenceEquals(other.gameObject, targets[i].t)) i++;
+        if (other.gameObject.tag.Equals("Enemy"))
+        {
+            // Find the object in our targets and remove it.
+            int i = 0;
+            while (i < targets.Count && !GameObject.ReferenceEquals(other.gameObject, targets[i].t)) i++;
 
-        targets.RemoveAt(i);
+            targets.RemoveAt(i);
 
-        Debug.Log($"Removed {other.name} from {parentVehicle.name} targeting");
+            Debug.Log($"Removed {other.name} from {parentVehicle.name} targeting");
+        }
     }
 
 
