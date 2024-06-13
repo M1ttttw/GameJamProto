@@ -936,7 +936,7 @@ MonoBehaviour:
   attackStrength: 0
   attackSpeed: 1
   bulletSpeed: 0
-  attackRangeShape: {fileID: 0}
+  attackRangeShape: {fileID: 283826682}
   bullet: {fileID: 0}
   health: 0
 --- !u!1660057539 &9223372036854775807
