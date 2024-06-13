@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Range\RangeBehavior.cs" />
     <Compile Include="Assets\Scripts\Vehicles\AllRounder.cs" />
+    <Compile Include="Assets\Scripts\Range\TargetAndDistance.cs" />
     <Compile Include="Assets\Scripts\Vehicles\Vehicle.cs" />
   </ItemGroup>
   <ItemGroup>
