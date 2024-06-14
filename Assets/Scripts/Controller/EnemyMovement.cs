@@ -7,7 +7,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] Transform target;
     UnityEngine.AI.NavMeshAgent agent;
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         agent.updateRotation=false;
@@ -15,12 +15,22 @@ public class EnemyMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         
     }
-    void OnEnable()
+
+    private void Update()
     {
+        OnEnable();
+    }
+
+    private void OnEnable()
+    {
+        
+        if (agent == null) {
+            Start();
+        }
         agent.SetDestination(target.position);
     }
 }
