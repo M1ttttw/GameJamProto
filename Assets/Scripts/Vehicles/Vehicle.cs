@@ -9,6 +9,7 @@ public abstract class Vehicle : MonoBehaviour
     protected float attackCooldownTimer;
     public float attackSpeed;
     public float bulletSpeed;
+    public float bulletLifetime;
       
     // External Objects
     public GameObject attackRangeShape;

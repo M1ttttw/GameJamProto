@@ -617,7 +617,7 @@ Transform:
   m_GameObject: {fileID: 1116020432}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.97, y: 1, z: 0}
+  m_LocalPosition: {x: 1.5, y: 0.72, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -935,7 +935,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackStrength: 0
   attackSpeed: 1
-  bulletSpeed: 10
+  bulletSpeed: 20
+  bulletLifetime: 5
   attackRangeShape: {fileID: 283826682}
   bullet: {fileID: 5725095367807220101, guid: 20b823a8f6131e549beca41f5e6ab01f, type: 3}
   health: 0
