@@ -50,7 +50,7 @@ public class RangeBehavior : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag.Equals("Enemy"))
+        if (other.gameObject.tag.Equals("Enemy") & this.gameObject.tag.Equals("Player"))
         {
             // Add this gameObject to the target's list
             TargetAndDistance new_entry = new TargetAndDistance(other.gameObject, Vector3.Distance(parentVehicle.transform.position, other.gameObject.transform.position));
@@ -74,7 +74,8 @@ public class RangeBehavior : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.tag.Equals("Enemy"))
+        // if other gameObject tag is player then shoot player
+        if (other.gameObject.tag.Equals("Player") & this.gameObject.tag.Equals("Enemy"))
         {
             // Find the object in our targets and remove it.
             int i = 0;
@@ -84,6 +85,7 @@ public class RangeBehavior : MonoBehaviour
 
             Debug.Log($"Removed {other.name} from {parentVehicle.name} targeting");
         }
+        
     }
 
 
