@@ -40,6 +40,7 @@ public class RangeBehavior : MonoBehaviour
             else
             {
                 Debug.Log($"{parentVehicle.name} firing at {targets[0].t.name}: {targets[0].t.transform.position.x}, {targets[0].t.transform.position.y}, {targets[0].t.transform.position.z}");
+                vehicleScript.attack(targets[0].t);
                 vehicleScript.setTime(0);
             }
         }
@@ -63,8 +64,9 @@ public class RangeBehavior : MonoBehaviour
 
             // We also want to fire a bullet straight away when we have 1 target in our range.
             if (targets.Count == 1) {
-                vehicleScript.setTime(0);
                 Debug.Log($"{parentVehicle.name} firing at {other.gameObject.name}: {other.gameObject.transform.position.x}, {other.gameObject.transform.position.y}, {other.gameObject.transform.position.z}");
+                vehicleScript.attack(other.gameObject);
+                vehicleScript.setTime(0);
             }
         }
 

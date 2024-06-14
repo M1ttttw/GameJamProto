@@ -17,8 +17,8 @@ public abstract class Vehicle : MonoBehaviour
     // Health
     public float health;
 
-    // Send a bullet towards this location
-    public abstract void attack(Vector3 position);
+    // Send a bullet towards this target
+    public abstract void attack(GameObject target);
 
     public void incrementTime() { attackCooldownTimer += Time.deltaTime; }
     public float getTime() { return attackCooldownTimer; }
