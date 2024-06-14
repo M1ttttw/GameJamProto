@@ -28,6 +28,7 @@ public class AllRounder : Vehicle
 
         bulletBehavior.setUnifBulletSpeed(Vector3.Normalize(global_position - gameObject.transform.position));
         bulletBehavior.setBulletSpeed(bulletSpeed);
+        bulletBehavior.setLifetime(bulletLifetime);
 
         // Next we want to make the bullet's sprite rotate and look at the direction of our target.
         Vector3 local_position = transform.InverseTransformPoint(global_position);
