@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 
 
-
+//TODO change targeting
 
 
 public class RangeBehavior : MonoBehaviour
@@ -49,7 +49,7 @@ public class RangeBehavior : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other)
-    {
+    {//Get tag of parentVehicle and change tag under based on parent tag
         if (other.gameObject.tag.Equals("Enemy"))
         {
             // Add this gameObject to the target's list
