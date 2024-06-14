@@ -14,4 +14,10 @@ public class BulletBehavior : MonoBehaviour
     {
         transform.position += unifBulletVector * bulletSpeed * Time.deltaTime;
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        
+    }
+
 }
