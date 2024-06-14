@@ -25,9 +25,9 @@ public class AllRounder : Vehicle
 
         // Edit the copy of the bullet so it fires at the desired vector and speed
         BulletBehavior bulletBehavior = bullet_copy.GetComponent<BulletBehavior>();
-       
-        bulletBehavior.unifBulletVector = Vector3.Normalize(global_position - gameObject.transform.position);
-        bulletBehavior.bulletSpeed = bulletSpeed;
+
+        bulletBehavior.setUnifBulletSpeed(Vector3.Normalize(global_position - gameObject.transform.position));
+        bulletBehavior.setBulletSpeed(bulletSpeed);
 
         // Next we want to make the bullet's sprite rotate and look at the direction of our target.
         Vector3 local_position = transform.InverseTransformPoint(global_position);
