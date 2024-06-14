@@ -45,6 +45,9 @@ TagManager:
   - name: Range Shape
     uniqueID: 297110907
     locked: 0
+  - name: Bullets
+    uniqueID: 3492504597
+    locked: 0
   - name: Car
     uniqueID: 1904771771
     locked: 0
