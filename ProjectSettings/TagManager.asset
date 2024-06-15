@@ -43,11 +43,19 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Stage
+    uniqueID: 1680382641
+    locked: 0
   - name: Range Shape
     uniqueID: 297110907
     locked: 0
+<<<<<<< HEAD
   - name: Bullets
     uniqueID: 3492504597
+=======
+  - name: bullets
+    uniqueID: 1320570011
+>>>>>>> NavMesh
     locked: 0
   - name: Car
     uniqueID: 1904771771
