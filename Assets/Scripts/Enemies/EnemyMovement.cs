@@ -14,7 +14,7 @@ public class EnemyMovement : MonoBehaviour
     private float mind;
     private GameObject closestCar;
     private Vector3 anchorPosition;
-    private bool retarget = false;
+    private bool hasTarget = false;
     void Start()
     {
         //on creation we find closest car and nav to it
@@ -60,11 +60,7 @@ public class EnemyMovement : MonoBehaviour
 
     void wait()
     {
-        //added just in case the enemy strafes out of range (which shouldn't happen)
-        //if we didnt retarget an enemy we dont change the anchor position
-        if (retarget == false){
-            anchorPosition = this.transform.position;
-        }
+        anchorPosition = this.transform.position;
         //stops pathfinding
         agent.SetDestination(this.transform.position);
         StartCoroutine(Strafe());
@@ -74,8 +70,12 @@ public class EnemyMovement : MonoBehaviour
     {
         if (other.gameObject.tag.Equals(opponentTag))
         {
-            //calls the wait function after x seconds so that the enemy has a chance to go further into the targeting range and strafing wont break aggro
-            Invoke("wait", engageDistance);
+            //added just in case we strafes out of range (which shouldn't happen)
+            if (hasTarget == false){
+                //calls the wait function after x seconds so that the enemy has a chance to go further into the targeting range and strafing wont break aggro
+                Invoke("wait", engageDistance);
+                hasTarget = true;
+            }
             
         }
 
