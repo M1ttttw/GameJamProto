@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -40,4 +41,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Stage
+    uniqueID: 1680382641
+    locked: 0
+  - name: Range Shape
+    uniqueID: 297110907
+    locked: 0
+  - name: bullets
+    uniqueID: 1320570011
+    locked: 0
+  - name: Car
+    uniqueID: 1904771771
     locked: 0
