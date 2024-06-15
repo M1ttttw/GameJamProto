@@ -9,9 +9,7 @@ public class EnemyMovement : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-        agent.updateRotation=false;
-        agent.updateUpAxis=false;
+        
     }
 
     // Update is called once per frame
@@ -20,17 +18,12 @@ public class EnemyMovement : MonoBehaviour
         
     }
 
-    private void Update()
-    {
-        OnEnable();
-    }
-
     private void OnEnable()
     {
-        
-        if (agent == null) {
-            Start();
-        }
+
+        agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
         agent.SetDestination(target.position);
     }
 }
