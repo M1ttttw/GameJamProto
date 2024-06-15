@@ -8,7 +8,9 @@ public class EnemyMovement : MonoBehaviour
 {
     UnityEngine.AI.NavMeshAgent agent;
     protected String opponentTag = "Player";
-    public GameObject[] cars;
+    private GameObject[] cars;
+    public float engageDistance=1.2f;
+    public float strafeDistance=0.5f;
     private float mind;
     private GameObject closestCar;
     private Vector3 anchorPosition;
@@ -48,7 +50,7 @@ public class EnemyMovement : MonoBehaviour
         agent.speed = 1;
         while (true){
             //set dest to a random nearby location
-            agent.SetDestination(new Vector3(this.transform.position.x+UnityEngine.Random.Range(-0.7f, 0.7f),this.transform.position.y+UnityEngine.Random.Range(-0.7f, 0.7f),this.transform.position.z));
+            agent.SetDestination(new Vector3(this.transform.position.x+UnityEngine.Random.Range(-strafeDistance, strafeDistance),this.transform.position.y+UnityEngine.Random.Range(-strafeDistance, strafeDistance),this.transform.position.z));
             yield return new WaitForSeconds(UnityEngine.Random.Range(0.5f, 1f));
             //return enemy to original position so that it doesnt straft too far away
             agent.SetDestination(anchorPosition);
@@ -72,8 +74,8 @@ public class EnemyMovement : MonoBehaviour
     {
         if (other.gameObject.tag.Equals(opponentTag))
         {
-            //calls the wait function after 0.15 seconds so that the enemy has a chance to go further into the targeting range and strafing wont break aggro
-            Invoke("wait", 0.15f);
+            //calls the wait function after x seconds so that the enemy has a chance to go further into the targeting range and strafing wont break aggro
+            Invoke("wait", engageDistance);
             
         }
 
