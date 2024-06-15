@@ -8,16 +8,17 @@ public class AllRounder : Vehicle
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    public override void attack(GameObject target) {
+    public override void attack(GameObject target)
+    {
         Vector3 global_position = target.transform.position;
 
         // Create a copy of a bullet, and store it for later use.
@@ -25,9 +26,10 @@ public class AllRounder : Vehicle
 
         // Edit the copy of the bullet so it fires at the desired vector and speed
         BulletBehavior bulletBehavior = bullet_copy.GetComponent<BulletBehavior>();
-       
-        bulletBehavior.unifBulletVector = Vector3.Normalize(global_position - gameObject.transform.position);
-        bulletBehavior.bulletSpeed = bulletSpeed;
+
+        bulletBehavior.setUnifBulletSpeed(Vector3.Normalize(global_position - gameObject.transform.position));
+        bulletBehavior.setBulletSpeed(bulletSpeed);
+        bulletBehavior.setLifetime(bulletLifetime);
 
         // Next we want to make the bullet's sprite rotate and look at the direction of our target.
         Vector3 local_position = transform.InverseTransformPoint(global_position);
