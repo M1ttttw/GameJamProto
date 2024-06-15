@@ -5,7 +5,6 @@ using System.Linq;
 using UnityEngine;
 
 
-//TODO change targeting
 
 
 public class RangeBehavior : MonoBehaviour
