@@ -11,6 +11,7 @@ using UnityEngine;
 public class RangeBehavior : MonoBehaviour
 {
     public GameObject parentVehicle;
+    protected String opponentTag;
     protected Vehicle vehicleScript;
     protected List<TargetAndDistance> targets = new List<TargetAndDistance>();
 
@@ -18,6 +19,8 @@ public class RangeBehavior : MonoBehaviour
     void Start()
     {
         vehicleScript = parentVehicle.GetComponent<Vehicle>();
+        if (parentVehicle.tag == "Player") { opponentTag = "Enemy"; }
+        else { opponentTag = "Player"; }
     }
 
     // Update itself
@@ -50,7 +53,7 @@ public class RangeBehavior : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {//Get tag of parentVehicle and change tag under based on parent tag
-        if (other.gameObject.tag.Equals("Enemy"))
+        if (other.gameObject.tag.Equals(opponentTag))
         {
             // Add this gameObject to the target's list
             TargetAndDistance new_entry = new TargetAndDistance(other.gameObject, Vector3.Distance(parentVehicle.transform.position, other.gameObject.transform.position));
@@ -74,7 +77,7 @@ public class RangeBehavior : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.tag.Equals("Enemy"))
+        if (other.gameObject.tag.Equals(opponentTag))
         {
             // Find the object in our targets and remove it.
             int i = 0;
