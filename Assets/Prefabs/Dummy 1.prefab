@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 6856212553639456982}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.521955, y: 0.53941035, z: 0.013885589}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -164,7 +164,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55478c75c645ba94c85b0cdfd3f56d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  engageDistance: 1.2
+  strafeDistance: 0.5
+  closestCar: {fileID: 0}
+  hasTarget: 0
 --- !u!114 &2082226937342786185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,13 +180,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd0b8d393640ea843a88f1197eaaee94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  armorReduction: 0.5
   attackStrength: 0
   attackSpeed: 1
   bulletSpeed: 20
   bulletLifetime: 1
+  AP: 0
+  recoil: 0
   attackRangeShape: {fileID: 6918846581501120905}
   bullet: {fileID: 5725095367807220101, guid: 20b823a8f6131e549beca41f5e6ab01f, type: 3}
   health: 0
+  armor: 0
 --- !u!195 &3195315916423419669
 NavMeshAgent:
   m_ObjectHideFlags: 0

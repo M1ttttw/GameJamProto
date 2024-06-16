@@ -163,7 +163,7 @@ Transform:
   m_GameObject: {fileID: 9003132878710228051}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.390657, y: -0.08903462, z: -2.832763}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -269,6 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf971e40375a6e6408443308a8e66344, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  armorReduction: 0.5
   attackStrength: 0
   attackSpeed: 1
   bulletSpeed: 20
@@ -278,6 +279,7 @@ MonoBehaviour:
   attackRangeShape: {fileID: 2211883813161480846}
   bullet: {fileID: 5725095367807220101, guid: 20b823a8f6131e549beca41f5e6ab01f, type: 3}
   health: 0
+  armor: 0
 --- !u!50 &5631652238928748476
 Rigidbody2D:
   serializedVersion: 4
