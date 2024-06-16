@@ -49,7 +49,7 @@ public class DefaultEnemy : Vehicle
         bulletBehavior.setLifetime(bulletLifetime);
         bulletBehavior.attackStrength = attackStrength;
         bulletBehavior.isAP = AP;
-        bulletBehavior.isFriendly = false;
+        bulletBehavior.setOppTag("Player");
 
         // Next we want to make the bullet's sprite rotate and look at the direction of our target.
         Vector3 local_position = transform.InverseTransformPoint(global_position);

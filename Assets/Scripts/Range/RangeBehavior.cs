@@ -34,23 +34,30 @@ public class RangeBehavior : MonoBehaviour
             // Recalculate each target's distance, since it may have changed.
             for (int i = 0; i < targets.Count; i++) { targets[i].d = Vector3.Distance(parentVehicle.transform.position, targets[i].t.transform.position); }
 
-            // Then sort the targets by each target's new distance. Recall: targets is a list of TargetAndDistance objects
-            targets.Sort((x, y) => x.d.CompareTo(y.d));
-            prevTarget = targets[0].t;
-            // Next we fire a bullet at the first item (the object that is closest) in our targets
+            // Then just grab the target that has the smallest distance
+            TargetAndDistance nearestOpp = targets[0];
+            for (int i = 0;i < targets.Count; i++)
+            {
+                if (targets[i].d < nearestOpp.d) {
+                    nearestOpp = targets[i];               
+                }
+            }
+
+            prevTarget = nearestOpp.t;
+            // Next we fire a bullet at the object that is closest in our targets
             if (vehicleScript.getTime() < vehicleScript.attackSpeed)
             {
                 vehicleScript.incrementTime();
             }
             else
             {
-                Debug.Log($"{parentVehicle.name} firing at {targets[0].t.name}: {targets[0].t.transform.position.x}, {targets[0].t.transform.position.y}, {targets[0].t.transform.position.z}");
-                vehicleScript.attack(targets[0].t);
+                Debug.Log($"{parentVehicle.name} firing at {nearestOpp.t.name}: {nearestOpp.t.transform.position.x}, {nearestOpp.t.transform.position.y}, {nearestOpp.t.transform.position.z}");
+                vehicleScript.attack(nearestOpp.t);
                 vehicleScript.setTime(0);
             }
         }
         if (targets.Count == 0 && prevTarget is not null && GameObject.Find("Cars").transform.childCount>0){
-            if (!System.Object.ReferenceEquals(em.closestCar,prevCCar) || (em.closestCar == null&&prevCCar == null)){
+            if (!System.Object.ReferenceEquals(em.closestCar,prevCCar) || (em.closestCar == null && prevCCar == null)){
                 Debug.Log("swapped");
                 
                 em.reTarget();
@@ -67,10 +74,8 @@ public class RangeBehavior : MonoBehaviour
             // Add this gameObject to the target's list
             TargetAndDistance new_entry = new TargetAndDistance(other.gameObject, Vector3.Distance(parentVehicle.transform.position, other.gameObject.transform.position));
 
-            // You may assume that targets is sorted... because it's being sorted in the Update method. This assumption will obviously lead to some optimization improvements
-            int i = 0;
-            while (i < targets.Count && new_entry.d > targets[i].d) i++;
-            targets.Insert(i, new_entry);
+            // Append it to the back this time.
+            targets.Append(new_entry);
 
             Debug.Log($"Added {other.name} to {parentVehicle.name} targeting");
 
