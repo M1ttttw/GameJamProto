@@ -776,7 +776,7 @@ MonoBehaviour:
   bulletSpeed: 1
   attackRangeShape: {fileID: 1751656816}
   bullet: {fileID: 5725095367807220101, guid: 20b823a8f6131e549beca41f5e6ab01f, type: 3}
-  health: 0
+  health: 100
 --- !u!1 &1503129732
 GameObject:
   m_ObjectHideFlags: 0
@@ -957,7 +957,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b99099d8a6a4f1b459f8ff9051352c00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentVehicle: {fileID: 2128641777}
+  parentVehicle: {fileID: 1116020432}
 --- !u!58 &1751656818
 CircleCollider2D:
   m_ObjectHideFlags: 0
