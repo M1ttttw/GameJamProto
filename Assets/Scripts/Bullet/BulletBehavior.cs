@@ -10,6 +10,10 @@ public class BulletBehavior : MonoBehaviour
     private Vector3 unifBulletVector;
     private float lifetimeTimer = 0;
     private float lifetime;
+    public bool isAP;
+    public bool isFriendly;
+    private Vehicle attackedVehicle;
+    public float attackStrength;
 
     public void setBulletSpeed(float newSpeed) { bulletSpeed = newSpeed; }
     public void setUnifBulletSpeed(Vector3 unifVec) { unifBulletVector = unifVec; }
@@ -30,9 +34,21 @@ public class BulletBehavior : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-
+        if (isFriendly){
+            if (collision.gameObject.tag == "Enemy"){
+                attackedVehicle = collision.gameObject.GetComponent<Vehicle>();
+                attackedVehicle.onBulletImpact(attackStrength,isAP);
+                Destroy(this.gameObject);
+            }
+        }else{
+            if (collision.gameObject.tag == "Player"){
+                attackedVehicle = collision.gameObject.GetComponent<Vehicle>();
+                attackedVehicle.onBulletImpact(attackStrength,isAP);
+                Destroy(this.gameObject);
+            }
+        }
     }
 
 }

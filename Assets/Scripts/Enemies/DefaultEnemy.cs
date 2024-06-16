@@ -15,6 +15,21 @@ public class DefaultEnemy : Vehicle
     {
         
     }
+    public override void onBulletImpact(float dmg, bool isAP){
+        if (armor>0){
+            if(isAP){
+                armor -= dmg;
+            }else{
+                armor -= dmg*armorReduction;
+            }
+        }else{
+            health -= dmg;
+            if (health < 0){
+                Destroy(this.gameObject);
+            }
+        }
+    }
+
     public override void attack(GameObject target) {
         Vector3 global_position = target.transform.position;
 
@@ -27,6 +42,8 @@ public class DefaultEnemy : Vehicle
         bulletBehavior.setUnifBulletSpeed(Vector3.Normalize(global_position - gameObject.transform.position));
         bulletBehavior.setBulletSpeed(bulletSpeed);
         bulletBehavior.setLifetime(bulletLifetime);
+        bulletBehavior.attackStrength = attackStrength;
+        bulletBehavior.isAP = AP;
 
         // Next we want to make the bullet's sprite rotate and look at the direction of our target.
         Vector3 local_position = transform.InverseTransformPoint(global_position);
