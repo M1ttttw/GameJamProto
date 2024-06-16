@@ -50,8 +50,7 @@ public class RangeBehavior : MonoBehaviour
             }
         }
         if (targets.Count == 0 && prevTarget is not null && GameObject.Find("Cars").transform.childCount>0){
-            
-            if (!System.Object.ReferenceEquals(em.closestCar,prevCCar)){
+            if (!System.Object.ReferenceEquals(em.closestCar,prevCCar) || (em.closestCar == null&&prevCCar == null)){
                 Debug.Log("swapped");
                 
                 em.reTarget();
