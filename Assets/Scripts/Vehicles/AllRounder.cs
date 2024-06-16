@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class AllRounder : Vehicle
 {
+    public delegate void OnPlayerDeath();
+    public static event OnPlayerDeath Death;
     private float randStrafe;
     // Start is called before the first frame update
     void Start()
@@ -27,6 +29,9 @@ public class AllRounder : Vehicle
         }else{
             health -= dmg;
             if (health < 0){
+                if (Death is not null){
+                    Death();
+                }
                 Destroy(this.gameObject);
             }
         }
@@ -46,6 +51,7 @@ public class AllRounder : Vehicle
         bulletBehavior.setLifetime(bulletLifetime);
         bulletBehavior.attackStrength = attackStrength;
         bulletBehavior.isAP = AP;
+        bulletBehavior.isFriendly = true;
         
         // Next we want to make the bullet's sprite rotate and look at the direction of our target.
         Vector3 local_position = transform.InverseTransformPoint(global_position);
