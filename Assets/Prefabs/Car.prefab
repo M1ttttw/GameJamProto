@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 6253494420813954525}
   - component: {fileID: 3878706172594329588}
   - component: {fileID: 2612353817173221108}
+  - component: {fileID: 5631652238928748476}
   m_Layer: 0
   m_Name: Car
   m_TagString: Player
@@ -272,6 +273,35 @@ MonoBehaviour:
   attackSpeed: 1
   bulletSpeed: 20
   bulletLifetime: 1
+  AP: 0
+  recoil: 0.33
   attackRangeShape: {fileID: 2211883813161480846}
   bullet: {fileID: 5725095367807220101, guid: 20b823a8f6131e549beca41f5e6ab01f, type: 3}
   health: 0
+--- !u!50 &5631652238928748476
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9003132878710228051}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

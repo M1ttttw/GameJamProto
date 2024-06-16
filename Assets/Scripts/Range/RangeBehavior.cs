@@ -13,13 +13,16 @@ public class RangeBehavior : MonoBehaviour
     protected String opponentTag;
     protected Vehicle vehicleScript;
     protected List<TargetAndDistance> targets = new List<TargetAndDistance>();
-
+    private GameObject prevTarget;
+    private EnemyMovement em;
+    private GameObject prevCCar;
     // Start is called before the first frame update
     void Start()
     {
         vehicleScript = parentVehicle.GetComponent<Vehicle>();
         if (parentVehicle.tag == "Player") { opponentTag = "Enemy"; }
         else { opponentTag = "Player"; }
+        em = this.gameObject.transform.parent.gameObject.GetComponent<EnemyMovement>();
     }
 
     // Update itself
@@ -33,7 +36,7 @@ public class RangeBehavior : MonoBehaviour
 
             // Then sort the targets by each target's new distance. Recall: targets is a list of TargetAndDistance objects
             targets.Sort((x, y) => x.d.CompareTo(y.d));
-
+            prevTarget = targets[0].t;
             // Next we fire a bullet at the first item (the object that is closest) in our targets
             if (vehicleScript.getTime() < vehicleScript.attackSpeed)
             {
@@ -46,8 +49,16 @@ public class RangeBehavior : MonoBehaviour
                 vehicleScript.setTime(0);
             }
         }
-
-
+        if (targets.Count == 0 && prevTarget is not null && GameObject.Find("Cars").transform.childCount>0){
+            
+            if (!System.Object.ReferenceEquals(em.closestCar,prevCCar)){
+                Debug.Log("swapped");
+                
+                em.reTarget();
+            }
+            prevCCar = em.closestCar;
+        }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D other)
