@@ -16,13 +16,22 @@ public class ShopManager : MonoBehaviour
     // UI objects that need to be stored.
     public RectTransform shopCanvas;
     public Text moneyText;
-
+    
+    // Item Display related attributes
+    public Transform itemDisplay;
+    private GameObject itemInDisplay;
+    public Text itemNameText;
+    public Text itemDescText;
+    public Text priceText;
+    public Text sellText;
 
     // Start is called before the first frame update
     void Start()
     {
-        moneyText.text = $"Money: {money}";
-        
+        moneyText.text = $"Money: ${money}";
+        catalogSize = vehicles.Count;
+        itemInDisplay = vehicles[currIndex];
+        showCaseItemInDisplay();
     }
 
     // Update is called once per frame
@@ -45,12 +54,28 @@ public class ShopManager : MonoBehaviour
 
     public void prevItem()
     {
-
+        currIndex--;
+        if (currIndex < 0) { currIndex = catalogSize - 1; }
+        itemInDisplay.SetActive(false);
+        itemInDisplay = vehicles[currIndex];
+        itemInDisplay.SetActive(true);
+        showCaseItemInDisplay();
     }
 
     public void nextItem()
     {
-
+        currIndex = (currIndex + 1) % catalogSize;
+        itemInDisplay.SetActive(false);
+        itemInDisplay = vehicles[currIndex];
+        itemInDisplay.SetActive(true);
+        showCaseItemInDisplay();
     }
 
+    public void showCaseItemInDisplay() {
+        ShopItem shopItem = itemInDisplay.GetComponent<ShopItem>();
+        itemNameText.text = shopItem.itemName;
+        itemDescText.text = shopItem.description;
+        priceText.text = $"Cost: ${shopItem.price}";
+        sellText.text = $"Sell: ${shopItem.sellPrice}";
+    }
 }
