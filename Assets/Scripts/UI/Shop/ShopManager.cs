@@ -25,6 +25,9 @@ public class ShopManager : MonoBehaviour
     public Text priceText;
     public Text sellText;
 
+    // Griddy
+    // public GridManager grid;
+
     // Start is called before the first frame update
     void Start()
     {
