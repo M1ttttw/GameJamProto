@@ -64,8 +64,10 @@
     <Compile Include="Assets\Scripts\Enemies\EnemyMovement.cs" />
     <Compile Include="Assets\Scripts\Bullet\BulletBehavior.cs" />
     <Compile Include="Assets\Scripts\Enemies\DefaultEnemy.cs" />
+    <Compile Include="Assets\Scripts\UI\Shop\ShopManager.cs" />
     <Compile Include="Assets\Scripts\Vehicles\AllRounder.cs" />
     <Compile Include="Assets\Scripts\Range\TargetAndDistance.cs" />
+    <Compile Include="Assets\Scripts\UI\Shop\ShopItem.cs" />
     <Compile Include="Assets\Scripts\Vehicles\Vehicle.cs" />
   </ItemGroup>
   <ItemGroup>
