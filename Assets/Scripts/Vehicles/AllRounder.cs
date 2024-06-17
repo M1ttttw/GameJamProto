@@ -51,7 +51,7 @@ public class AllRounder : Vehicle
         bulletBehavior.setLifetime(bulletLifetime);
         bulletBehavior.attackStrength = attackStrength;
         bulletBehavior.isAP = AP;
-        bulletBehavior.setOppTag("Enemy");
+        bulletBehavior.isFriendly = true;
         
         // Next we want to make the bullet's sprite rotate and look at the direction of our target.
         Vector3 local_position = transform.InverseTransformPoint(global_position);
