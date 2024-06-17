@@ -10,5 +10,5 @@ public class ShopItem : MonoBehaviour
     public int price;
     public int sellPrice;
 
-    public GameObject spriteItem;
+    public GameObject prefab;
 }
