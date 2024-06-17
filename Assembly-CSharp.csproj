@@ -60,19 +60,15 @@
     <Analyzer Include="D:\Unity\Unity Editors\2022.3.29f1\2022.3.32f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\UI\Griddy\TileInteractable.cs" />
     <Compile Include="Assets\Scripts\Range\RangeBehavior.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyMovement.cs" />
     <Compile Include="Assets\Scripts\Bullet\BulletBehavior.cs" />
     <Compile Include="Assets\Scripts\Enemies\DefaultEnemy.cs" />
-    <Compile Include="Assets\Scripts\UI\Griddy\GridManager.cs" />
     <Compile Include="Assets\Scripts\UI\Shop\ShopManager.cs" />
     <Compile Include="Assets\Scripts\Vehicles\AllRounder.cs" />
-    <Compile Include="Assets\Scripts\UI\Griddy\GridItem.cs" />
     <Compile Include="Assets\Scripts\Range\TargetAndDistance.cs" />
     <Compile Include="Assets\Scripts\UI\Shop\ShopItem.cs" />
     <Compile Include="Assets\Scripts\Vehicles\Vehicle.cs" />
-    <Compile Include="Assets\Scripts\UI\TransitionManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
