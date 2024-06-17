@@ -16,6 +16,7 @@ public class RangeBehavior : MonoBehaviour
     private GameObject prevTarget;
     private EnemyMovement em;
     private GameObject prevCCar;
+    private GameObject closestCar;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,12 +51,18 @@ public class RangeBehavior : MonoBehaviour
             }
         }
         if (targets.Count == 0 && prevTarget is not null && GameObject.Find("Cars").transform.childCount>0){
-            if (!System.Object.ReferenceEquals(em.closestCar,prevCCar) || (em.closestCar == null&&prevCCar == null)){
-                Debug.Log("swapped");
-                
-                em.reTarget();
+            try{
+                closestCar = em.getCC();    
+                if (!System.Object.ReferenceEquals(closestCar,prevCCar) || (closestCar == null&&prevCCar == null)){
+                    Debug.Log("swapped");
+                        
+                    em.reTarget();
+                }
+                prevCCar = closestCar;
+            }catch(NullReferenceException ex){
+                Debug.Log("cringe");
             }
-            prevCCar = em.closestCar;
+            
         }
         
     }

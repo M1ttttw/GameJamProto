@@ -27,6 +27,9 @@ public class EnemyMovement : MonoBehaviour
         strafe = Strafe();
         
     }
+    public GameObject getCC(){
+        return closestCar;
+    }
     //finds closest car to enemy by just finding all gameobjects with player tag and finding the closest one
     private GameObject FindClosestCar(){
         mind = 100000f;
