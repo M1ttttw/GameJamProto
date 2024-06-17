@@ -411,6 +411,7 @@ GameObject:
   - component: {fileID: 356018321}
   - component: {fileID: 356018320}
   - component: {fileID: 356018319}
+  - component: {fileID: 356018322}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -520,6 +521,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 356018317}
   m_CullTransparentMesh: 1
+--- !u!114 &356018322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356018317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eeb60035ab8ef2469c635f732a40ab5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startLevel: {fileID: 11400000, guid: 8b442ebee5f147648b4ca1dfc978d5af, type: 2}
+  startButton: {fileID: 356018319}
 --- !u!1 &396523085
 GameObject:
   m_ObjectHideFlags: 0
@@ -1012,6 +1027,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1072488688}
   - component: {fileID: 1072488687}
+  - component: {fileID: 1072488689}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -1035,6 +1051,7 @@ MonoBehaviour:
   placementComplete: {fileID: 11400000, guid: 8b442ebee5f147648b4ca1dfc978d5af, type: 2}
   SceneLoaded: {fileID: 11400000, guid: 7b7f331996e21ea4db72046faa9fc5df, type: 2}
   rangeVisible: 0
+  enemy: {fileID: 6856212553639456982, guid: 15fa130c0a2da394c901af32ce807984, type: 3}
 --- !u!4 &1072488688
 Transform:
   m_ObjectHideFlags: 0
@@ -1050,6 +1067,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1072488689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072488686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 940f266b9d165124e887f8554e028181, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 8b442ebee5f147648b4ca1dfc978d5af, type: 2}
+  onEventTriggered:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1072488687}
+        m_TargetAssemblyTypeName: Main, Assembly-CSharp
+        m_MethodName: StartLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1347569231
 GameObject:
   m_ObjectHideFlags: 0
@@ -1404,7 +1449,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6428659384739805888, guid: 15fa130c0a2da394c901af32ce807984, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.89
+      value: 3.84
       objectReference: {fileID: 0}
     - target: {fileID: 6428659384739805888, guid: 15fa130c0a2da394c901af32ce807984, type: 3}
       propertyPath: m_LocalPosition.y
