@@ -149,5 +149,5 @@ public class TileInteractable : MonoBehaviour
         }
     }
 
-    public GameObject getObjectInTile() { return gridObjInTile; }
+    public GameObject getGridObjInTile() { return gridObjInTile; }
 }
