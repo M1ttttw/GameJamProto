@@ -9,13 +9,15 @@ public class EnemyMovement : MonoBehaviour
     UnityEngine.AI.NavMeshAgent agent;
     protected String opponentTag = "Player";
     private GameObject[] cars;
-    public float engageDistance=1.2f;
-    public float strafeDistance=0.5f;
+    public float engageDistance;
+    public float strafeDistance;
     private float mind;
     public GameObject closestCar;
     private Vector3 anchorPosition;
     public bool hasTarget = false;
     private IEnumerator strafe;
+    public float sSpeed;
+    public float mSpeed;
     void Start()
     {
         //on creation we find closest car and nav to it
@@ -24,6 +26,7 @@ public class EnemyMovement : MonoBehaviour
         agent.updateRotation = false;
         agent.updateUpAxis = false;
         agent.SetDestination(closestCar.transform.position);
+        agent.speed = mSpeed;
         strafe = Strafe();
         
     }
@@ -54,11 +57,11 @@ public class EnemyMovement : MonoBehaviour
     public IEnumerator Strafe()
     {
         Debug.Log("strafe");
-        agent.speed = 1;
+        agent.speed = sSpeed;
         while (true){
             //set dest to a random nearby location
             agent.SetDestination(new Vector3(this.transform.position.x+UnityEngine.Random.Range(-strafeDistance, strafeDistance),this.transform.position.y+UnityEngine.Random.Range(-strafeDistance, strafeDistance),this.transform.position.z));
-            yield return new WaitForSeconds(UnityEngine.Random.Range(0.5f, 1f));
+            yield return new WaitForSeconds(UnityEngine.Random.Range(0.5f, 0.8f));
             //return enemy to original position so that it doesnt straft too far away
             agent.SetDestination(anchorPosition);
             yield return new WaitForSeconds(1f);
@@ -68,7 +71,10 @@ public class EnemyMovement : MonoBehaviour
     void wait()
     {
         Debug.Log("wait");
+        agent.speed = 0;
+        
         anchorPosition = this.transform.position;
+        agent.velocity = Vector3.zero;
         //stops pathfinding
         agent.SetDestination(this.transform.position);
         StartCoroutine(strafe);
@@ -76,7 +82,8 @@ public class EnemyMovement : MonoBehaviour
     public void reTarget(){
         hasTarget = false;
         Debug.Log("retarget");
-        agent.speed = 1f;
+        agent.speed = mSpeed;
+        agent.velocity = Vector3.zero;
         StopCoroutine(strafe);
         closestCar=FindClosestCar();
         agent.SetDestination(closestCar.transform.position);

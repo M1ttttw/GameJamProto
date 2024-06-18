@@ -26,7 +26,7 @@ public class DefaultEnemy : Vehicle
             }
         }else{
             health -= dmg;
-            if (health < 0){
+            if (health <= 0){
                 if (Death is not null){
                     Death();
                 }

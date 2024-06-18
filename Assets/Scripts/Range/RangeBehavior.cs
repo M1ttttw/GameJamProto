@@ -45,7 +45,7 @@ public class RangeBehavior : MonoBehaviour
             }
             else
             {
-                Debug.Log($"{parentVehicle.name} firing at {targets[0].t.name}: {targets[0].t.transform.position.x}, {targets[0].t.transform.position.y}, {targets[0].t.transform.position.z}");
+                // Debug.Log($"{parentVehicle.name} firing at {targets[0].t.name}: {targets[0].t.transform.position.x}, {targets[0].t.transform.position.y}, {targets[0].t.transform.position.z}");
                 vehicleScript.attack(targets[0].t);
                 vehicleScript.setTime(0);
             }
