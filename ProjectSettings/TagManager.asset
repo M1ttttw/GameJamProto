@@ -42,6 +42,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Navmesh
+    uniqueID: 488050915
+    locked: 0
   - name: Stage
     uniqueID: 1680382641
     locked: 0
