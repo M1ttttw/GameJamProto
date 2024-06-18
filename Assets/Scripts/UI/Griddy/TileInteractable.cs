@@ -8,10 +8,12 @@ using UnityEngine.UIElements;
 public class TileInteractable : MonoBehaviour
 {
     public SpriteRenderer rend;
+    private Color color;
 
     public GridManager parentGrid;
-    public GameObject spawnObject;
-    private GameObject objectInTile;
+    public GameObject spawnObject; // Object with the Shop Item
+    private GameObject gridObjInTile; // Object with the grid item
+    private ShopItem shopItmInTile; // Storing the shopitem that is in the tile.
 
     public int x_ind;
     public int y_ind;
@@ -21,40 +23,42 @@ public class TileInteractable : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rend.color = new Color(0, 0, 0, 0);
+        color = new Color(0, 0, 0, 0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (objectInTile != null && !drag)
+        rend.color = color;
+        if (gridObjInTile != null && !drag)
         {
-            objectInTile.transform.position = transform.position;
+            gridObjInTile.transform.position = transform.position;
         }
-
     }
     private void OnMouseEnter()
     {
         Debug.Log($"Mouse has entered on {this.gameObject.name}");
-        rend.color = new Color(0, 0, 0, 0.4f);
-        // spawnObject = parentGrid.gridItemPrefab;
+        color = new Color(0, 0, 0, 0.4f);
+        spawnObject = parentGrid.shopItemPrefab;
     }
 
     private void OnMouseExit()
     {
         Debug.Log($"Mouse has exited on {this.gameObject.name}");
-        rend.color = new Color(0, 0, 0, 0);
+        color = new Color(0, 0, 0, 0);
     }
 
     private void OnMouseDown()
     {
         Debug.Log($"Mouse has clicked on {this.gameObject.name}");
-        rend.color = new Color(0, 0, 0, 0.7f);
-        //if (objectInTile == null)
-        //{
-        //    objectInTile = Instantiate(spawnObject, transform.position, Quaternion.identity, parentGrid.gridItemParent);
-        //    objectInTile.GetComponent<GridItem>().parent = parentGrid.prefabParent;
-        //}
+        color = new Color(0, 0, 0, 0.7f);
+        if (gridObjInTile == null)
+        {
+            gridObjInTile = Instantiate(spawnObject.GetComponent<ShopItem>().gridItemPrefab, transform.position, Quaternion.identity, parentGrid.gridItemParent);
+            gridObjInTile.GetComponent<GridItem>().parent = parentGrid.prefabParent;
+            shopItmInTile = spawnObject.GetComponent<ShopItem>();
+            parentGrid.shopManager.boughtItem(shopItmInTile);
+        }
     }
 
     private void OnMouseUp()
@@ -62,44 +66,52 @@ public class TileInteractable : MonoBehaviour
         Debug.Log($"Mouse has been released on {this.gameObject.name}");
         if (drag)
         {
-            rend.color = new Color(0, 0, 0, 0);
+            color = new Color(0, 0, 0, 0);
 
-            //if (objectInTile != null)
-            //{
-            //    int currMouseX = parentGrid.getLocalMouseX();
-            //    int currMouseY = parentGrid.getLocalMouseY();
+            if (gridObjInTile != null)
+            {
+                int currMouseX = parentGrid.getLocalMouseX();
+                int currMouseY = parentGrid.getLocalMouseY();
 
-            //    if (!(currMouseX == x_ind && currMouseY == y_ind))
-            //    {
-            //        // Mouse was released on a location that is not this tile.
-            //        TileInteractable released_tile = parentGrid.getTileInteractable()[currMouseX, currMouseY];
+                if (!(currMouseX == x_ind && currMouseY == y_ind))
+                {
+                    // Mouse was released on a location that is not this tile.
+                    TileInteractable released_tile = parentGrid.getTileInteractable()[currMouseX, currMouseY];
 
-            //        if (released_tile.objectInTile == null)
-            //        {
-            //            // Move the object here.
-            //            released_tile.objectInTile = objectInTile;
-            //            objectInTile = null;
+                    if (released_tile.gridObjInTile == null)
+                    {
+                        // Move the object here.
+                        released_tile.gridObjInTile = gridObjInTile;
+                        gridObjInTile = null;
 
-            //            Debug.Log("Moved object");
-            //        }
-            //        else
-            //        {
+                        released_tile.shopItmInTile = shopItmInTile;
+                        shopItmInTile = null;
+
+                        Debug.Log("Moved object");
+                    }
+                    else
+                    {
                         // Otherwise swap the objects
-            //            GameObject temp1 = objectInTile;
-            //            GameObject temp2 = released_tile.objectInTile;
+                        GameObject temp1GridObj = gridObjInTile;
+                        GameObject temp2GridObj = released_tile.gridObjInTile;
+                        ShopItem temp1ShopItm = shopItmInTile;
+                        ShopItem temp2ShopItm = released_tile.shopItmInTile;
 
-            //            released_tile.objectInTile = temp1;
-            //            objectInTile = temp2;
+                        released_tile.gridObjInTile = temp1GridObj;
+                        gridObjInTile = temp2GridObj;
 
-            //            Debug.Log("Swapped Object");
-            //        }
-            //    }
-            //}
+                        released_tile.shopItmInTile = temp1ShopItm;
+                        shopItmInTile = temp2ShopItm;
+
+                        Debug.Log("Swapped Object");
+                    }
+                }
+            }
 
         }
         else
         {
-            rend.color = new Color(0, 0, 0, 0.4f);
+            color = new Color(0, 0, 0, 0.4f);
         }
         drag = false;
     }
@@ -108,12 +120,12 @@ public class TileInteractable : MonoBehaviour
     {
         Debug.Log($"Mouse is being dragged on {this.gameObject.name}");
         drag = true;
-        if (objectInTile != null)
+        if (gridObjInTile != null)
         {
             // Make the object follow the cursor
             Vector2 worldMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-            objectInTile.transform.position = new Vector3(worldMousePosition.x, worldMousePosition.y, objectInTile.transform.position.z);
+            gridObjInTile.transform.position = new Vector3(worldMousePosition.x, worldMousePosition.y, gridObjInTile.transform.position.z);
         }
 
 
@@ -121,19 +133,21 @@ public class TileInteractable : MonoBehaviour
 
     private void OnMouseOver()
     {
-        //parentGrid.setLocalMouseX(x_ind);
-        //parentGrid.setLocalMouseY(y_ind);
+        parentGrid.setLocalMouseX(x_ind);
+        parentGrid.setLocalMouseY(y_ind);
 
         if (Input.GetMouseButtonDown(1))
         {
             Debug.Log($"Right Clicked {name}");
-            if (objectInTile != null && !drag)
+            if (gridObjInTile != null && !drag)
             {
-                Destroy(objectInTile);
-                objectInTile = null;
+                Destroy(gridObjInTile);
+                gridObjInTile = null;
+                parentGrid.shopManager.soldItem(shopItmInTile);
+                shopItmInTile = null;
             }
         }
     }
 
-    public GameObject getObjectInTile() { return objectInTile; }
+    public GameObject getObjectInTile() { return gridObjInTile; }
 }

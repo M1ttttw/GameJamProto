@@ -5,27 +5,27 @@ using UnityEngine;
 
 public class GridManager : MonoBehaviour
 {
-    public GameObject cam;
     public GameObject tile;
-    public GameObject gridItemPrefab;
+    public GameObject shopItemPrefab;
     public Transform tileInterParent;
     public Transform gridItemParent;
     public Transform prefabParent;
-    public TileInteractable[,] tileMatrix;
-
+    private TileInteractable[,] tileMatrix;
+    
     public float size = 1f;
     public int width = 0;
     public int height = 0;
 
     private int localMouseX = 0;
-    private int localMouseY = 0;
+    private int localMouseY = 0;    
+
+    public ShopManager shopManager;
 
     // Start is called before the first frame update
     void Start()
     {
         tileMatrix = new TileInteractable[width, height];
-        for (int i = 0; i < width; i++)
-        {
+        for (int i = 0; i < width; i++) { 
             for (int j = 0; j < height; j++)
             {
                 float x = i * size;
@@ -35,20 +35,24 @@ public class GridManager : MonoBehaviour
                 clone_tile.name = $"Tile {i}, {j}";
 
                 tileMatrix[i, j] = clone_tile.GetComponent<TileInteractable>();
-                tileMatrix[i, j].spawnObject = gridItemPrefab;
+                tileMatrix[i, j].spawnObject = shopItemPrefab;
                 tileMatrix[i, j].parentGrid = this;
                 tileMatrix[i, j].x_ind = i;
                 tileMatrix[i, j].y_ind = j;
             }
-
+        
         }
 
-        transform.position = new Vector3(cam.transform.position.x - (width * size - size) / 2, cam.transform.position.y - (height * size - size) / 2, transform.position.z);
+        transform.position = new Vector3(transform.position.x - (width * size - size) / 2, transform.position.y - (height * size - size) / 2, transform.position.z);
+    }
+
+    void Update()
+    {
+        shopItemPrefab = shopManager.getItemInDisplay();
     }
 
     [ContextMenu("Hide Tiles")]
-    public void hideTiles()
-    {
+    public void hideTiles() { 
         for (int i = 0; i < width; i++)
         {
             for (int j = 0; j < height; j++)
@@ -59,10 +63,8 @@ public class GridManager : MonoBehaviour
     }
 
     [ContextMenu("Show Tiles")]
-    public void showTiles()
-    {
-        for (int i = 0; i < width; i++)
-        {
+    public void showTiles() {
+        for (int i = 0; i < width; i++) { 
             for (int j = 0; j < height; j++)
             {
                 tileMatrix[i, j].gameObject.SetActive(true);
@@ -72,15 +74,12 @@ public class GridManager : MonoBehaviour
 
 
     [ContextMenu("Spawn Prefabs in Tiles")]
-    public void spawnPrefabs()
-    {
+    public void spawnPrefabs() { 
         for (int i = 0; i < width; i++)
         {
-            for (int j = 0; j < height; j++)
-            {
+            for (int j = 0; j < height; j++) {
                 GameObject obj = tileMatrix[i, j].getObjectInTile();
-                if (obj != null)
-                {
+                if (obj != null) { 
                     obj.GetComponent<GridItem>().spawnPrefab();
                 }
             }
@@ -90,9 +89,9 @@ public class GridManager : MonoBehaviour
     public int getLocalMouseX() { return localMouseX; }
     public int getLocalMouseY() { return localMouseY; }
     public TileInteractable[,] getTileInteractable() { return tileMatrix; }
-    public void setLocalMouseX(int x) { localMouseX = x; }
+    public void setLocalMouseX(int x) {  localMouseX = x; }
     public void setLocalMouseY(int y) { localMouseY = y; }
-
+    
 
 
 

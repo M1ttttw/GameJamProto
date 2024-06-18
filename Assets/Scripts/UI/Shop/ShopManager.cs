@@ -25,9 +25,6 @@ public class ShopManager : MonoBehaviour
     public Text priceText;
     public Text sellText;
 
-    // Griddy
-    // public GridManager grid;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -81,4 +78,18 @@ public class ShopManager : MonoBehaviour
         priceText.text = $"Cost: ${shopItem.price}";
         sellText.text = $"Sell: ${shopItem.sellPrice}";
     }
+
+    public void boughtItem(ShopItem shopItem) {
+        if (money >= shopItem.price) { 
+            money -= shopItem.price;
+            moneyText.text = $"Money: ${money}";
+        }
+    }
+
+    public void soldItem(ShopItem shopItem) {
+        money += shopItem.sellPrice;
+        moneyText.text = $"Money: ${money}";
+    }
+
+    public GameObject getItemInDisplay() { return itemInDisplay; }
 }
