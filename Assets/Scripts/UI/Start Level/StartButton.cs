@@ -11,6 +11,7 @@ public class StartButton : MonoBehaviour
     void Start()
     {
         startButton.onClick.AddListener(SceneTransition);
+        
     }
     void SceneTransition(){
         SceneManager.LoadScene("FirstLevel", LoadSceneMode.Single);

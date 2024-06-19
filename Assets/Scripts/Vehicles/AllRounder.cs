@@ -10,7 +10,7 @@ public class AllRounder : Vehicle
     // Start is called before the first frame update
     void Start()
     {
-
+        audioPlayer = GameObject.Find("Manager").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -19,6 +19,7 @@ public class AllRounder : Vehicle
 
     }
     public override void onBulletImpact(float dmg, bool isAP){
+        audioPlayer.PlayOneShot(bulletImpactSound, 0.3f);
         if (armor>0){
             if(isAP){
                 armor -= dmg;
@@ -28,6 +29,7 @@ public class AllRounder : Vehicle
         }else{
             health -= dmg;
             if (health < 0){
+                audioPlayer.PlayOneShot(deathSound, 0.5f);
                 onCarDeath.TriggerEvent();
                 Destroy(this.gameObject);
             }
@@ -35,6 +37,7 @@ public class AllRounder : Vehicle
     }
     public override void attack(GameObject target)
     {
+        audioPlayer.PlayOneShot(attackSound, 0.3f);
         Vector3 global_position = target.transform.position;
 
         // Create a copy of a bullet, and store it for later use.

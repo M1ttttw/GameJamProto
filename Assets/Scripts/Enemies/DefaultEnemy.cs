@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DefaultEnemy : Vehicle
 {
+    
     private MainManager scoreKeeper;
     public GameEvent onEnemyDeath;
     public int score;
@@ -11,6 +12,7 @@ public class DefaultEnemy : Vehicle
     void Start()
     {
         scoreKeeper = GameObject.Find("Manager").GetComponent<MainManager>();
+        audioPlayer = GameObject.Find("Manager").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -19,6 +21,7 @@ public class DefaultEnemy : Vehicle
         
     }
     public override void onBulletImpact(float dmg, bool isAP){
+        audioPlayer.PlayOneShot(bulletImpactSound, 0.3f);
         if (armor>0){
             if(isAP){
                 armor -= dmg;
@@ -28,6 +31,7 @@ public class DefaultEnemy : Vehicle
         }else{
             health -= dmg;
             if (health < 0){
+                audioPlayer.PlayOneShot(deathSound, 0.3f);
                 scoreKeeper.enemyDeathScore += score;
                 onEnemyDeath.TriggerEvent();
                 Destroy(this.gameObject);
@@ -36,6 +40,7 @@ public class DefaultEnemy : Vehicle
     }
 
     public override void attack(GameObject target) {
+        audioPlayer.PlayOneShot(attackSound, 0.3f);
         Vector3 global_position = target.transform.position;
 
         // Create a copy of a bullet, and store it for later use.

@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public abstract class Vehicle : MonoBehaviour
 {
+    public AudioClip attackSound;
+    public AudioClip bulletImpactSound;
+    public AudioClip deathSound;
+    public AudioSource audioPlayer;
     // Attack Related Attributes
     public float armorReduction = 0.5f;
     public float attackStrength;

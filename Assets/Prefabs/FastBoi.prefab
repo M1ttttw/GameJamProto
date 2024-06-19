@@ -180,6 +180,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd0b8d393640ea843a88f1197eaaee94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackSound: {fileID: 8300000, guid: edb4a21a270970748bd1461b1b1e79a1, type: 3}
+  bulletImpactSound: {fileID: 8300000, guid: c8a5a6664bebcb0449623b553ffbcb06, type: 3}
+  deathSound: {fileID: 8300000, guid: c07598f35b5a11146b3407e9058625a9, type: 3}
+  audioPlayer: {fileID: 0}
   armorReduction: 0.5
   attackStrength: 1
   attackSpeed: 0.3
@@ -191,7 +195,7 @@ MonoBehaviour:
   bullet: {fileID: 5725095367807220101, guid: 20b823a8f6131e549beca41f5e6ab01f, type: 3}
   health: 50
   armor: 0
-  scoreKeeper: {fileID: 0}
+  onEnemyDeath: {fileID: 11400000, guid: 23031bb419b2ccf49bc2e5c38cd8c3f0, type: 2}
   score: 5
 --- !u!195 &6618475477540836033
 NavMeshAgent:
