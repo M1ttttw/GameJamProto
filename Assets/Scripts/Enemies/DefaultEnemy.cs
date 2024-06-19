@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class DefaultEnemy : Vehicle
 {
-    public delegate void OnPlayerDeath();
-    public static event OnPlayerDeath Death;
+    private MainManager scoreKeeper;
+    public GameEvent onEnemyDeath;
+    public int score;
     // Start is called before the first frame update
     void Start()
     {
-        
+        scoreKeeper = GameObject.Find("Manager").GetComponent<MainManager>();
     }
 
     // Update is called once per frame
@@ -26,10 +28,9 @@ public class DefaultEnemy : Vehicle
             }
         }else{
             health -= dmg;
-            if (health < 0){
-                if (Death is not null){
-                    Death();
-                }
+            if (health <= 0){
+                scoreKeeper.enemyDeathScore += score;
+                onEnemyDeath.TriggerEvent();
                 Destroy(this.gameObject);
             }
         }

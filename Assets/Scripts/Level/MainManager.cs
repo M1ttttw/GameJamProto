@@ -23,6 +23,7 @@ public class MainManager : MonoBehaviour
     public int level;
     public GameObject carParent;
     public GameObject enemyParent;
+    private Coroutine spawnRoutine;
 
     // Start is called before the first frame update
     void Start()
@@ -68,7 +69,9 @@ public class MainManager : MonoBehaviour
     public void OnCarDeath(){
         Debug.Log($"Car has died... {carParent.transform.childCount} remaining");
         if (carParent.transform.childCount <= 1){
+            // Make the game over screen appear, and stop the coroutine from spawning stuff!
             gameOverScreen.SetActive(true);
+            StopCoroutine(spawnRoutine);
         }
     }
     public void onEnemyDeath(){
@@ -81,7 +84,7 @@ public class MainManager : MonoBehaviour
         CalculateSpawnRate(lvl);
         lvlCost = CalculateLvlPts(lvl);
         tempLC = lvlCost;
-        StartCoroutine(SampleLevel());
+        spawnRoutine = StartCoroutine(SampleLevel());
     }
     IEnumerator SampleLevel()
     {

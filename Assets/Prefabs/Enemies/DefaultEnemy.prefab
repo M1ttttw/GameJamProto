@@ -246,7 +246,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 0
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &3298924465773547047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,6 +286,8 @@ MonoBehaviour:
   bullet: {fileID: 5725095367807220101, guid: 20b823a8f6131e549beca41f5e6ab01f, type: 3}
   health: 100
   armor: 0
+  onEnemyDeath: {fileID: 11400000, guid: 23031bb419b2ccf49bc2e5c38cd8c3f0, type: 2}
+  score: 1
 --- !u!195 &3195315916423419669
 NavMeshAgent:
   m_ObjectHideFlags: 0
