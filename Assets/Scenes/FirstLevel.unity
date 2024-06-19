@@ -2836,6 +2836,7 @@ MonoBehaviour:
   carParent: {fileID: 55899387}
   enemyParent: {fileID: 75201278}
   shopManagerObj: {fileID: 627712322}
+  enemies: []
 --- !u!114 &1293813314
 MonoBehaviour:
   m_ObjectHideFlags: 0
