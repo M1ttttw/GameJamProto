@@ -20,6 +20,7 @@ public class DefaultEnemy : Vehicle
         
     }
     public override void onBulletImpact(float dmg, bool isAP){
+        hitPlayer.Play();
         if (armor>0){
             if(isAP){
                 armor -= dmg;
@@ -29,6 +30,7 @@ public class DefaultEnemy : Vehicle
         }else{
             health -= dmg;
             if (health <= 0){
+                deathPlayer.Play();
                 scoreKeeper.enemyDeathScore += score;
                 onEnemyDeath.TriggerEvent();
                 Destroy(this.gameObject);
@@ -37,6 +39,7 @@ public class DefaultEnemy : Vehicle
     }
 
     public override void attack(GameObject target) {
+        shootPlayer.Play();
         Vector3 global_position = target.transform.position;
 
         // Create a copy of a bullet, and store it for later use.

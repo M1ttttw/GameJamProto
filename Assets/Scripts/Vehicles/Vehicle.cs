@@ -22,10 +22,14 @@ public abstract class Vehicle : MonoBehaviour
     public float health;
     public float armor;
 
+    // Audio
+    public AudioSource shootPlayer;
+    public AudioSource hitPlayer;
+    public AudioSource deathPlayer;
+
     // Send a bullet towards this target
     public abstract void attack(GameObject target);
     public abstract void onBulletImpact(float dmg, bool isAP);
-
     public void incrementTime() { attackCooldownTimer += Time.deltaTime; }
     public float getTime() { return attackCooldownTimer; }
     public void setTime(float value) { attackCooldownTimer = value; }

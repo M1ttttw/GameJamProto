@@ -103,7 +103,10 @@ public class ShopManager : MonoBehaviour
         moneyText.text = $"Money: ${money}";
     }
 
-    public void uiInvisible() { this.gameObject.SetActive(false); }
+    public void uiInvisible() {
+        shopCanvas.anchoredPosition = new Vector2(-529.84f, 948.9186f);
+        this.gameObject.SetActive(false); 
+    }
     
     public void uiVisible() { this.gameObject.SetActive(true); }
 
