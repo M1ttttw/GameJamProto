@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\UI\Griddy\TileInteractable.cs" />
     <Compile Include="Assets\Scripts\Range\RangeBehavior.cs" />
+    <Compile Include="Assets\Scripts\UI\GameOverScreen.cs" />
     <Compile Include="Assets\Scripts\Level\MainManager.cs" />
     <Compile Include="Assets\Scripts\UI\Start Level\StartButton.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyMovement.cs" />

@@ -2,12 +2,11 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+
 
 public class MainManager : MonoBehaviour
 {
-    public GameEvent onCarDeath;
-    public GameEvent placementComplete;
+    public GameObject gameOverScreen;
     public GameEvent nextLevel;
     public GameObject spawnAnchor;
     public GameEvent SceneLoaded;
@@ -28,7 +27,7 @@ public class MainManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        carParent = GameObject.Find("Cars");
+
     }
 
     public void StartLevel(){
@@ -67,9 +66,9 @@ public class MainManager : MonoBehaviour
         enemySpawnRate[2] = c3;
     }
     public void OnCarDeath(){
-        Debug.Log("Car has died...");
-        if (carParent.transform.childCount < 1){
-            SceneManager.LoadScene("Start");
+        Debug.Log($"Car has died... {carParent.transform.childCount} remaining");
+        if (carParent.transform.childCount <= 1){
+            gameOverScreen.SetActive(true);
         }
     }
     public void onEnemyDeath(){

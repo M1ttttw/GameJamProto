@@ -49,10 +49,10 @@ public class ShopManager : MonoBehaviour
         toggleShopCanvasVisibility = (byte) ((toggleShopCanvasVisibility + 1) % 2);
 
         if (toggleShopCanvasVisibility == 1) { 
-            shopCanvas.anchoredPosition = new Vector2 (0f, 386.2686f);
+            shopCanvas.anchoredPosition = new Vector2 (961f, 948.9186f);
         } else
         {
-            shopCanvas.anchoredPosition = new Vector2(-1492f, 386.2686f);
+            shopCanvas.anchoredPosition = new Vector2(-529.84f, 948.9186f);
         }
     }
 

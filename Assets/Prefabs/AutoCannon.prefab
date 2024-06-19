@@ -157,6 +157,7 @@ MonoBehaviour:
   bullet: {fileID: 5725095367807220101, guid: 20b823a8f6131e549beca41f5e6ab01f, type: 3}
   health: 150
   armor: 0
+  onCarDeath: {fileID: 11400000, guid: 5c7eaccf424ed3e49bca1b70f9eef625, type: 2}
 --- !u!50 &8403920226753446083
 Rigidbody2D:
   serializedVersion: 4
