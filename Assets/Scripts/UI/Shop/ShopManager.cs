@@ -9,6 +9,7 @@ public class ShopManager : MonoBehaviour
     public int money = 1000;
     public List<GameObject> vehicles;
     public byte toggleShopCanvasVisibility = 0;
+    private int numVehicles = 0;
 
     private int currIndex = 0;
     private int catalogSize;
@@ -24,6 +25,9 @@ public class ShopManager : MonoBehaviour
     public Text itemDescText;
     public Text priceText;
     public Text sellText;
+
+    // Events that should be triggered
+    public GameEvent startLevel;
 
     // Start is called before the first frame update
     void Start()
@@ -83,18 +87,28 @@ public class ShopManager : MonoBehaviour
         if (canBuy(shopItem)) { 
             money -= shopItem.price;
             moneyText.text = $"Money: ${money}";
+            numVehicles++;
         }
     }
 
     public bool canBuy(ShopItem shopItem) { return money >= shopItem.price; }
 
-
     public void soldItem(ShopItem shopItem) {
         money += shopItem.sellPrice;
         moneyText.text = $"Money: ${money}";
+        numVehicles--;
     }
 
     public void uiInvisible() { this.gameObject.SetActive(false); }
+    
     public void uiVisible() { this.gameObject.SetActive(true); }
+
+    public void pressStartLevel() {
+        if (numVehicles > 0) {
+            startLevel.TriggerEvent();
+        }
+    }
+    
+    
     public GameObject getItemInDisplay() { return itemInDisplay; }
 }
