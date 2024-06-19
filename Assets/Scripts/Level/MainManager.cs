@@ -23,7 +23,7 @@ public class MainManager : MonoBehaviour
     private int tempLC;
     public int level;
     public GameObject carParent;
-    public Transform enemyParent;
+    public GameObject enemyParent;
 
     // Start is called before the first frame update
     void Start()
@@ -98,13 +98,13 @@ public class MainManager : MonoBehaviour
             }
             
             if (temp<enemySpawnRate[0] && lvlCost>= 50){
-                Instantiate(tankyEnemy, new Vector3(UnityEngine.Random.Range(x-12f,x+12f), y, 0), Quaternion.identity, enemyParent);
+                Instantiate(tankyEnemy, new Vector3(UnityEngine.Random.Range(x-12f,x+12f), y, 0), Quaternion.identity, enemyParent.transform);
                 lvlCost -= 50;
             }else if(temp < enemySpawnRate[1] && lvlCost >= 5){
-                Instantiate(fastEnemy, new Vector3(UnityEngine.Random.Range(x-12f,x+12f), y, 0), Quaternion.identity, enemyParent);
+                Instantiate(fastEnemy, new Vector3(UnityEngine.Random.Range(x-12f,x+12f), y, 0), Quaternion.identity, enemyParent.transform);
                 lvlCost -= 5;
             }else{
-                Instantiate(enemy, new Vector3(UnityEngine.Random.Range(x-12f,x+12f), y, 0), Quaternion.identity, enemyParent);
+                Instantiate(enemy, new Vector3(UnityEngine.Random.Range(x-12f,x+12f), y, 0), Quaternion.identity, enemyParent.transform);
                 lvlCost -= 1;
             }
             
