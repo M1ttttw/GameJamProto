@@ -79,8 +79,8 @@ public class GridManager : MonoBehaviour
         {
             for (int j = 0; j < height; j++) {
                 GameObject obj = tileMatrix[i, j].getGridObjInTile();
-                if (obj != null) { 
-                    obj.GetComponent<GridItem>().spawnPrefab();
+                if (obj != null) {
+                    tileMatrix[i, j].setPrefabInTile(obj.GetComponent<GridItem>().spawnPrefab());
                 }
             }
         }
