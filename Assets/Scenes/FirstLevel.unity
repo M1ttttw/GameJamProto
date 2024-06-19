@@ -1230,7 +1230,6 @@ GameObject:
   m_Component:
   - component: {fileID: 627712323}
   - component: {fileID: 627712324}
-  - component: {fileID: 627712325}
   m_Layer: 0
   m_Name: Shop UI
   m_TagString: Untagged
@@ -1282,34 +1281,6 @@ MonoBehaviour:
   priceText: {fileID: 1592420786}
   sellText: {fileID: 1046615723}
   startLevel: {fileID: 11400000, guid: e51b16848b8d2b5468628b454d9c99ba, type: 2}
---- !u!114 &627712325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 627712322}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 940f266b9d165124e887f8554e028181, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: e51b16848b8d2b5468628b454d9c99ba, type: 2}
-  onEventTriggered:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 627712324}
-        m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
-        m_MethodName: uiInvisible
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &633609802
 GameObject:
   m_ObjectHideFlags: 0
@@ -1601,6 +1572,95 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 734987767}
   m_CullTransparentMesh: 1
+--- !u!1 &743091118
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 743091119}
+  - component: {fileID: 743091121}
+  - component: {fileID: 743091120}
+  m_Layer: 0
+  m_Name: ShopUI EventListener
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &743091119
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 743091118}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1987475207}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &743091120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 743091118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 940f266b9d165124e887f8554e028181, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 3f3e80ce7e9516647b2e1dd850f2a9e4, type: 2}
+  onEventTriggered:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 627712324}
+        m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
+        m_MethodName: uiVisible
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &743091121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 743091118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 940f266b9d165124e887f8554e028181, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: e51b16848b8d2b5468628b454d9c99ba, type: 2}
+  onEventTriggered:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 627712324}
+        m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
+        m_MethodName: uiInvisible
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &770365722
 GameObject:
   m_ObjectHideFlags: 0
@@ -2665,6 +2725,7 @@ GameObject:
   - component: {fileID: 1293813313}
   - component: {fileID: 1293813312}
   - component: {fileID: 1293813311}
+  - component: {fileID: 1293813314}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -2773,6 +2834,35 @@ MonoBehaviour:
   level: 1
   carParent: {fileID: 55899387}
   enemyParent: {fileID: 75201278}
+  shopManagerObj: {fileID: 627712322}
+--- !u!114 &1293813314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293813309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 940f266b9d165124e887f8554e028181, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 3f3e80ce7e9516647b2e1dd850f2a9e4, type: 2}
+  onEventTriggered:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1293813313}
+        m_TargetAssemblyTypeName: MainManager, Assembly-CSharp
+        m_MethodName: GiveReward
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1330081558
 GameObject:
   m_ObjectHideFlags: 0
@@ -3255,6 +3345,7 @@ GameObject:
   - component: {fileID: 1743755890}
   - component: {fileID: 1743755889}
   - component: {fileID: 1743755894}
+  - component: {fileID: 1743755895}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -3383,6 +3474,34 @@ MonoBehaviour:
       - m_Target: {fileID: 1743755889}
         m_TargetAssemblyTypeName: Scrolling, Assembly-CSharp
         m_MethodName: startScrolling
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1743755895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1743755888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 940f266b9d165124e887f8554e028181, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 3f3e80ce7e9516647b2e1dd850f2a9e4, type: 2}
+  onEventTriggered:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1743755889}
+        m_TargetAssemblyTypeName: Scrolling, Assembly-CSharp
+        m_MethodName: endScrolling
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3604,6 +3723,7 @@ GameObject:
   - component: {fileID: 1910862597}
   - component: {fileID: 1910862596}
   - component: {fileID: 1910862598}
+  - component: {fileID: 1910862599}
   m_Layer: 0
   m_Name: Grid Manager
   m_TagString: Untagged
@@ -3677,6 +3797,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1910862599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910862595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 940f266b9d165124e887f8554e028181, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 3f3e80ce7e9516647b2e1dd850f2a9e4, type: 2}
+  onEventTriggered:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1910862596}
+        m_TargetAssemblyTypeName: GridManager, Assembly-CSharp
+        m_MethodName: transToPlacement
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1987475206
 GameObject:
   m_ObjectHideFlags: 0
@@ -3708,6 +3856,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 743091119}
   - {fileID: 627712323}
   - {fileID: 1168523104}
   m_Father: {fileID: 344054956}

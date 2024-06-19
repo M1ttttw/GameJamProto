@@ -25,22 +25,32 @@ public class MainManager : MonoBehaviour
     public GameObject carParent;
     public GameObject enemyParent;
     private Coroutine spawnRoutine;
+    public GameObject shopManagerObj;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     public void StartLevel(){
         SpawnWave(level);
     }
+
+    public void GiveReward() { 
+        // Add money to the shop manager
+        ShopManager shopManager = shopManagerObj.GetComponent<ShopManager>();
+        shopManager.addMoney(CalculateReward(level));
+    }
+
     public int CalculateReward(int x){
         return x*50+100;
     }
+    
     public int CalculateLvlPts(int x){
         return Mathf.FloorToInt(Mathf.Sqrt(x*500f));
     }
+    
     public void CalculateSpawnRate(int x){
         float c1;
         float c2;
@@ -67,6 +77,7 @@ public class MainManager : MonoBehaviour
         enemySpawnRate[1] = c2;
         enemySpawnRate[2] = c3;
     }
+    
     public void OnCarDeath(){
         Debug.Log($"Car has died... {carParent.transform.childCount} remaining");
         if (carParent.transform.childCount <= 1){
@@ -83,6 +94,7 @@ public class MainManager : MonoBehaviour
         {
             Debug.Log("Triggering the next level");
             level += 1;
+            StopCoroutine(spawnRoutine);
             nextLevel.TriggerEvent();
         }
     }
@@ -93,14 +105,17 @@ public class MainManager : MonoBehaviour
     {
         Debug.Log("Triggering the next level");
         level += 1;
+        StopCoroutine(spawnRoutine);
         nextLevel.TriggerEvent();
     }
+    
     public void SpawnWave(int lvl){
         CalculateSpawnRate(lvl);
         lvlCost = CalculateLvlPts(lvl);
         tempLC = lvlCost;
         spawnRoutine = StartCoroutine(SampleLevel());
     }
+    
     IEnumerator SampleLevel()
     {
         

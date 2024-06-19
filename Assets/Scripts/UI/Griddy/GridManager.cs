@@ -78,15 +78,21 @@ public class GridManager : MonoBehaviour
                 GameObject prefabObj = tileMatrix[i, j].getPrefabInTile();
                 if (gridObj != null)
                 {
-                    gridObj.SetActive(true);
-                    if (prefabObj == null) {
+                    if (prefabObj == null)
+                    {
                         // Check if the car is dead, thus we need to remove the grid obj there.
                         Debug.Log($"Removed dead car at {i}, {j}");
                         tileMatrix[i, j].setGridObjInTile(null);
                         tileMatrix[i, j].setShopItmInTile(null);
 
+                        shopManager.setNumVehicles(shopManager.getNumVehicles() - 1);
+
                         // Then destroy the grid object
                         Destroy(gridObj);
+                    }
+                    else {
+                        gridObj.SetActive(true);
+                        prefabObj.SetActive(false);
                     }
                     
                 } 

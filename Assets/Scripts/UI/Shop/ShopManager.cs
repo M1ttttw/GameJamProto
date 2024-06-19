@@ -94,9 +94,13 @@ public class ShopManager : MonoBehaviour
     public bool canBuy(ShopItem shopItem) { return money >= shopItem.price; }
 
     public void soldItem(ShopItem shopItem) {
-        money += shopItem.sellPrice;
-        moneyText.text = $"Money: ${money}";
+        addMoney(shopItem.sellPrice);
         numVehicles--;
+    }
+
+    public void addMoney(int num) {
+        money += num;
+        moneyText.text = $"Money: ${money}";
     }
 
     public void uiInvisible() { this.gameObject.SetActive(false); }
@@ -111,4 +115,6 @@ public class ShopManager : MonoBehaviour
     
     
     public GameObject getItemInDisplay() { return itemInDisplay; }
+    public int getNumVehicles() {  return numVehicles; }
+    public void setNumVehicles(int num) { numVehicles = num; }
 }
