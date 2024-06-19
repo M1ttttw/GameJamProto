@@ -94,15 +94,7 @@ public class ShopManager : MonoBehaviour
         moneyText.text = $"Money: ${money}";
     }
 
-    public void uiInvisible() { 
-        this.gameObject.SetActive(false);
-    }
-
-    public void uiVisible()
-    {
-        this.gameObject.SetActive(true);
-    }
-
-
+    public void uiInvisible() { this.gameObject.SetActive(false); }
+    public void uiVisible() { this.gameObject.SetActive(true); }
     public GameObject getItemInDisplay() { return itemInDisplay; }
 }

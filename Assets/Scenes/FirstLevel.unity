@@ -884,6 +884,7 @@ GameObject:
   m_Component:
   - component: {fileID: 627712323}
   - component: {fileID: 627712324}
+  - component: {fileID: 627712325}
   m_Layer: 0
   m_Name: Shop UI
   m_TagString: Untagged
@@ -934,6 +935,34 @@ MonoBehaviour:
   itemDescText: {fileID: 128345559}
   priceText: {fileID: 1592420786}
   sellText: {fileID: 1046615723}
+--- !u!114 &627712325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627712322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 940f266b9d165124e887f8554e028181, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: e51b16848b8d2b5468628b454d9c99ba, type: 2}
+  onEventTriggered:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 627712324}
+        m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
+        m_MethodName: uiInvisible
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &633609802
 GameObject:
   m_ObjectHideFlags: 0
@@ -1868,6 +1897,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1293813310}
+  - component: {fileID: 1293813313}
+  - component: {fileID: 1293813312}
+  - component: {fileID: 1293813311}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -1884,12 +1916,98 @@ Transform:
   m_GameObject: {fileID: 1293813309}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.69137716, y: 2.0753863, z: 5.9566264}
+  m_LocalPosition: {x: -0.04, y: 2.0753863, z: 5.9566264}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1293813311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293813309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 940f266b9d165124e887f8554e028181, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 5c7eaccf424ed3e49bca1b70f9eef625, type: 2}
+  onEventTriggered:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1293813313}
+        m_TargetAssemblyTypeName: MainManager, Assembly-CSharp
+        m_MethodName: OnCarDeath
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1293813312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293813309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 940f266b9d165124e887f8554e028181, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: e51b16848b8d2b5468628b454d9c99ba, type: 2}
+  onEventTriggered:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1293813313}
+        m_TargetAssemblyTypeName: MainManager, Assembly-CSharp
+        m_MethodName: StartLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1293813313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293813309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa222cbd9400e3c4fb3a9f41829bb113, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onCarDeath: {fileID: 11400000, guid: 5c7eaccf424ed3e49bca1b70f9eef625, type: 2}
+  placementComplete: {fileID: 11400000, guid: e51b16848b8d2b5468628b454d9c99ba, type: 2}
+  nextLevel: {fileID: 11400000, guid: 3f3e80ce7e9516647b2e1dd850f2a9e4, type: 2}
+  spawnAnchor: {fileID: 1655000713}
+  SceneLoaded: {fileID: 0}
+  rangeVisible: 0
+  enemy: {fileID: 6856212553639456982, guid: 446dacb70e54c3241b2702bb584420bf, type: 3}
+  fastEnemy: {fileID: 1114508624979888669, guid: 65eb4857c1de009489058792cdb38193, type: 3}
+  tankyEnemy: {fileID: 5421499274318173900, guid: 6688aee8f78000c4281789617e33a7e4, type: 3}
+  enemyDeathScore: 0
+  enemySpawnRate:
+  - 1
+  - 0
+  - 0
+  tankyCost: 50
+  fastCost: 5
+  level: 1
+  carParent: {fileID: 55899387}
 --- !u!1 &1330081558
 GameObject:
   m_ObjectHideFlags: 0
@@ -2352,7 +2470,7 @@ Transform:
   m_GameObject: {fileID: 1655000713}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.03, y: 10.5, z: 5.9566264}
+  m_LocalPosition: {x: -0.03, y: 9.21, z: 5.9566264}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2371,6 +2489,7 @@ GameObject:
   - component: {fileID: 1743755891}
   - component: {fileID: 1743755890}
   - component: {fileID: 1743755889}
+  - component: {fileID: 1743755894}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -2480,6 +2599,34 @@ Transform:
   - {fileID: 511964016}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &1743755894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1743755888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 940f266b9d165124e887f8554e028181, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: e51b16848b8d2b5468628b454d9c99ba, type: 2}
+  onEventTriggered:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1743755889}
+        m_TargetAssemblyTypeName: Scrolling, Assembly-CSharp
+        m_MethodName: startScrolling
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1823993613
 GameObject:
   m_ObjectHideFlags: 0
@@ -2560,6 +2707,7 @@ GameObject:
   - component: {fileID: 1846183227}
   - component: {fileID: 1846183226}
   - component: {fileID: 1846183225}
+  - component: {fileID: 1846183228}
   m_Layer: 0
   m_Name: Start Level Button
   m_TagString: Untagged
@@ -2669,6 +2817,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1846183223}
   m_CullTransparentMesh: 1
+--- !u!114 &1846183228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1846183223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 372a5ca78f662f2439f822d873552483, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startLevel: {fileID: 11400000, guid: e51b16848b8d2b5468628b454d9c99ba, type: 2}
+  startButton: {fileID: 1846183225}
 --- !u!1 &1910862595
 GameObject:
   m_ObjectHideFlags: 0
@@ -2679,6 +2841,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1910862597}
   - component: {fileID: 1910862596}
+  - component: {fileID: 1910862598}
   m_Layer: 0
   m_Name: Grid Manager
   m_TagString: Untagged
@@ -2724,6 +2887,34 @@ Transform:
   - {fileID: 52568327}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1910862598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910862595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 940f266b9d165124e887f8554e028181, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: e51b16848b8d2b5468628b454d9c99ba, type: 2}
+  onEventTriggered:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1910862596}
+        m_TargetAssemblyTypeName: GridManager, Assembly-CSharp
+        m_MethodName: transToCombat
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1987475206
 GameObject:
   m_ObjectHideFlags: 0
