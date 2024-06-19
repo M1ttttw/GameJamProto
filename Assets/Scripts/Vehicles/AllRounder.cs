@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class AllRounder : Vehicle
 {
-    public delegate void OnPlayerDeath();
-    public static event OnPlayerDeath Death;
+    public GameEvent onCarDeath;
     private float randStrafe;
     // Start is called before the first frame update
     void Start()
@@ -29,9 +28,7 @@ public class AllRounder : Vehicle
         }else{
             health -= dmg;
             if (health < 0){
-                if (Death is not null){
-                    Death();
-                }
+                onCarDeath.TriggerEvent();
                 Destroy(this.gameObject);
             }
         }

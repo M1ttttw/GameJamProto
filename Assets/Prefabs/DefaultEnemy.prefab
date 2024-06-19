@@ -77,7 +77,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1904771771
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -168,8 +168,6 @@ MonoBehaviour:
   strafeDistance: 0.5
   closestCar: {fileID: 0}
   hasTarget: 0
-  sSpeed: 1
-  mSpeed: 3.5
 --- !u!114 &2082226937342786185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,6 +191,8 @@ MonoBehaviour:
   bullet: {fileID: 5725095367807220101, guid: 20b823a8f6131e549beca41f5e6ab01f, type: 3}
   health: 100
   armor: 0
+  scoreKeeper: {fileID: 0}
+  score: 1
 --- !u!195 &3195315916423419669
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -288,7 +288,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 297110907
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 0.4862745, b: 0.4862745, a: 1}
