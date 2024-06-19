@@ -80,11 +80,14 @@ public class ShopManager : MonoBehaviour
     }
 
     public void boughtItem(ShopItem shopItem) {
-        if (money >= shopItem.price) { 
+        if (canBuy(shopItem)) { 
             money -= shopItem.price;
             moneyText.text = $"Money: ${money}";
         }
     }
+
+    public bool canBuy(ShopItem shopItem) { return money >= shopItem.price; }
+
 
     public void soldItem(ShopItem shopItem) {
         money += shopItem.sellPrice;
