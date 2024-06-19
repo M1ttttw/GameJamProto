@@ -2,6 +2,7 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class MainManager : MonoBehaviour
@@ -74,11 +75,25 @@ public class MainManager : MonoBehaviour
             StopCoroutine(spawnRoutine);
         }
     }
-    public void onEnemyDeath(){
-        if (enemyDeathScore>= tempLC){
-            level +=1;
+
+    public void onEnemyDeath()
+    {
+        Debug.Log("Enemy died");
+        if (enemyDeathScore >= tempLC)
+        {
+            Debug.Log("Triggering the next level");
+            level += 1;
             nextLevel.TriggerEvent();
         }
+    }
+
+    [ContextMenu("Skip Level")]
+    // This is for testing purposes only
+    public void skipLevel()
+    {
+        Debug.Log("Triggering the next level");
+        level += 1;
+        nextLevel.TriggerEvent();
     }
     public void SpawnWave(int lvl){
         CalculateSpawnRate(lvl);
