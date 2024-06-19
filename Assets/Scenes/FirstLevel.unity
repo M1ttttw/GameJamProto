@@ -2726,6 +2726,7 @@ GameObject:
   - component: {fileID: 1293813312}
   - component: {fileID: 1293813311}
   - component: {fileID: 1293813314}
+  - component: {fileID: 1293813315}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -2854,6 +2855,34 @@ MonoBehaviour:
       - m_Target: {fileID: 1293813313}
         m_TargetAssemblyTypeName: MainManager, Assembly-CSharp
         m_MethodName: GiveReward
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1293813315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293813309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 940f266b9d165124e887f8554e028181, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 23031bb419b2ccf49bc2e5c38cd8c3f0, type: 2}
+  onEventTriggered:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1293813313}
+        m_TargetAssemblyTypeName: MainManager, Assembly-CSharp
+        m_MethodName: onEnemyDeath
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
