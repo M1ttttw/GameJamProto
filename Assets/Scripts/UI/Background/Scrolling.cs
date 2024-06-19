@@ -25,4 +25,8 @@ public class Scrolling : MonoBehaviour
 
         }
     }
+
+    public void startScrolling() { startScroll = true; }
+    public void endScrolling() { startScroll = false; }
+
 }
