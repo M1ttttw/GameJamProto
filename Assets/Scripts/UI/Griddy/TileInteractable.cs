@@ -156,6 +156,7 @@ public class TileInteractable : MonoBehaviour
     }
 
     public GameObject getGridObjInTile() { return gridObjInTile; }
-    public void setPrefabInTile(GameObject obj) { prefabInTile = obj; }
     public GameObject getPrefabInTile() { return prefabInTile; }
+    public void setGridObjInTile(GameObject obj) {  gridObjInTile = obj; }
+    public void setPrefabInTile(GameObject obj) { prefabInTile = obj; }
 }

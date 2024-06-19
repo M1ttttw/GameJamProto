@@ -51,30 +51,9 @@ public class GridManager : MonoBehaviour
         shopItemPrefab = shopManager.getItemInDisplay();
     }
 
-    [ContextMenu("Hide Tiles")]
-    public void hideTiles() { 
-        for (int i = 0; i < width; i++)
-        {
-            for (int j = 0; j < height; j++)
-            {
-                tileMatrix[i, j].gameObject.SetActive(false);
-            }
-        }
-    }
-
-    [ContextMenu("Show Tiles")]
-    public void showTiles() {
-        for (int i = 0; i < width; i++) { 
-            for (int j = 0; j < height; j++)
-            {
-                tileMatrix[i, j].gameObject.SetActive(true);
-            }
-        }
-    }
-
-
-    [ContextMenu("Spawn Prefabs in Tiles")]
-    public void spawnPrefabs() { 
+    [ContextMenu("Transition to combat phase")]
+    public void transToCombat() { 
+        // Call this when you transition from placement to combat.
         for (int i = 0; i < width; i++)
         {
             for (int j = 0; j < height; j++) {
@@ -82,6 +61,27 @@ public class GridManager : MonoBehaviour
                 if (obj != null) {
                     tileMatrix[i, j].setPrefabInTile(obj.GetComponent<GridItem>().spawnPrefab());
                 }
+                tileMatrix[i, j].gameObject.SetActive(false);
+            }
+        }
+    }
+
+    [ContextMenu("Transition to placement phase")]
+    public void transToPlacement() {
+        // Call this when you transition back from combat to placement.
+        for (int i = 0; i < width; i++)
+        {
+            for (int j = 0; j < height; j++)
+            {
+                GameObject gridObj = tileMatrix[i, j].getGridObjInTile();
+                GameObject prefabObj = tileMatrix[i, j].getPrefabInTile();
+                if (gridObj != null && prefabObj == null)
+                {
+                    // Check if the car is dead, thus we need to remove the grid obj there.
+                    Debug.Log($"Removed dead car at {i}, {j}");
+                    tileMatrix[i, j].setGridObjInTile(null);
+                }
+                tileMatrix[i, j].gameObject.SetActive(true);
             }
         }
     }
