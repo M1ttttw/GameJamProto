@@ -18,6 +18,7 @@ public class Scrolling : MonoBehaviour
     {
         if (startScroll)
         {
+            Debug.Log("Scrolling");
             float y = Time.deltaTime * -scrollSpeed;
             Vector2 currOffset = rend.sharedMaterial.GetTextureOffset("_MainTex");
             Vector2 newOffset = currOffset + new Vector2(0, y);
