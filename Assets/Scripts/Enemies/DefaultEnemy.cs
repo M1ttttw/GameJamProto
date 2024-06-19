@@ -12,7 +12,7 @@ public class DefaultEnemy : Vehicle
     void Start()
     {
         scoreKeeper = GameObject.Find("Manager").GetComponent<MainManager>();
-        audioPlayer = GameObject.Find("Manager").GetComponent<AudioSource>();
+        audioPlayer = gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame

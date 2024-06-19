@@ -10,7 +10,7 @@ public class AllRounder : Vehicle
     // Start is called before the first frame update
     void Start()
     {
-        audioPlayer = GameObject.Find("Manager").GetComponent<AudioSource>();
+        audioPlayer = gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame

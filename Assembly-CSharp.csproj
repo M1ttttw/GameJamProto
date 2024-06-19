@@ -62,11 +62,11 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\UI\Griddy\TileInteractable.cs" />
     <Compile Include="Assets\Scripts\Range\RangeBehavior.cs" />
+    <Compile Include="Assets\Scripts\Level\MainManager.cs" />
     <Compile Include="Assets\Scripts\UI\Start Level\StartButton.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyMovement.cs" />
     <Compile Include="Assets\Scripts\Bullet\BulletBehavior.cs" />
     <Compile Include="Assets\Scripts\Enemies\DefaultEnemy.cs" />
-    <Compile Include="Assets\Scripts\Level\Main.cs" />
     <Compile Include="Assets\Scripts\UI\Griddy\GridManager.cs" />
     <Compile Include="Assets\Scripts\UI\Start Level\StartLevelButton.cs" />
     <Compile Include="Assets\Scripts\UI\Shop\ShopManager.cs" />

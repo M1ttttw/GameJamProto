@@ -68,7 +68,7 @@ public class MainManager : MonoBehaviour
         enemySpawnRate[2] = c3;
     }
     public void OnCarDeath(){
-        if (carParent.transform.childCount>1){
+        if (carParent.transform.childCount < 1){
             SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
         }
     }
