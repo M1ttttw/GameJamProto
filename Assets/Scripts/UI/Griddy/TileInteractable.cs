@@ -14,6 +14,7 @@ public class TileInteractable : MonoBehaviour
     public GameObject spawnObject; // Object with the Shop Item
     private GameObject gridObjInTile; // Object with the grid item
     private ShopItem shopItmInTile; // Storing the shopitem that is in the tile.
+    private GameObject prefabInTile;
 
     public int x_ind;
     public int y_ind;
@@ -54,10 +55,15 @@ public class TileInteractable : MonoBehaviour
         color = new Color(0, 0, 0, 0.7f);
         if (gridObjInTile == null)
         {
-            gridObjInTile = Instantiate(spawnObject.GetComponent<ShopItem>().gridItemPrefab, transform.position, Quaternion.identity, parentGrid.gridItemParent);
-            gridObjInTile.GetComponent<GridItem>().parent = parentGrid.prefabParent;
-            shopItmInTile = spawnObject.GetComponent<ShopItem>();
-            parentGrid.shopManager.boughtItem(shopItmInTile);
+            ShopItem shopItem = spawnObject.GetComponent<ShopItem>();
+            if (parentGrid.shopManager.canBuy(shopItem))
+            {
+                gridObjInTile = Instantiate(spawnObject.GetComponent<ShopItem>().gridItemPrefab, transform.position, Quaternion.identity, parentGrid.gridItemParent);
+                gridObjInTile.GetComponent<GridItem>().parent = parentGrid.prefabParent;
+                shopItmInTile = spawnObject.GetComponent<ShopItem>();
+
+                parentGrid.shopManager.boughtItem(shopItmInTile);
+            }
         }
     }
 
@@ -150,4 +156,6 @@ public class TileInteractable : MonoBehaviour
     }
 
     public GameObject getGridObjInTile() { return gridObjInTile; }
+    public void setPrefabInTile(GameObject obj) { prefabInTile = obj; }
+    public GameObject getPrefabInTile() { return prefabInTile; }
 }
