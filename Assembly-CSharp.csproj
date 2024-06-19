@@ -77,6 +77,7 @@
     <Compile Include="Assets\Scripts\Vehicles\Vehicle.cs" />
     <Compile Include="Assets\Scripts\UI\Background\BackgroundSpawner.cs" />
     <Compile Include="Assets\Scripts\UI\Background\StageMovement.cs" />
+    <Compile Include="Assets\Scripts\UI\Background\Scrolling.cs" />
     <Compile Include="Assets\Scripts\Event\GameEventListener.cs" />
     <Compile Include="Assets\Scripts\Event\GameEvent.cs" />
   </ItemGroup>
