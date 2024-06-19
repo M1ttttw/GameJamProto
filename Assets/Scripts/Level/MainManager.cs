@@ -89,7 +89,7 @@ public class MainManager : MonoBehaviour
 
     public void onEnemyDeath()
     {
-        Debug.Log("Enemy died");
+        Debug.Log($"Enemy died. Current enemyDeathScore: {enemyDeathScore}. the cap: {tempLC}");
         if (enemyDeathScore >= tempLC)
         {
             Debug.Log("Triggering the next level");

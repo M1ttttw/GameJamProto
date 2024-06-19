@@ -60,7 +60,7 @@ public class RangeBehavior : MonoBehaviour
                 }
                 prevCCar = closestCar;
             }catch(NullReferenceException ex){
-                Debug.Log("cringe");
+                // Debug.Log("cringe");
             }
             
         }
