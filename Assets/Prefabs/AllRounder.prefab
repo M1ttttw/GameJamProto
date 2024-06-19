@@ -373,7 +373,7 @@ MonoBehaviour:
   recoil: 0.33
   attackRangeShape: {fileID: 2211883813161480846}
   bullet: {fileID: 5725095367807220101, guid: 20b823a8f6131e549beca41f5e6ab01f, type: 3}
-  health: 3
+  health: 100
   armor: 0
   onCarDeath: {fileID: 11400000, guid: 5c7eaccf424ed3e49bca1b70f9eef625, type: 2}
 --- !u!50 &5631652238928748476
