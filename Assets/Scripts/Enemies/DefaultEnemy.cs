@@ -32,8 +32,8 @@ public class DefaultEnemy : Vehicle
             if (health <= 0){
                 deathPlayer.Play();
                 scoreKeeper.enemyDeathScore += score;
-                onEnemyDeath.TriggerEvent();
                 Destroy(this.gameObject);
+                onEnemyDeath.TriggerEvent();
             }
         }
     }

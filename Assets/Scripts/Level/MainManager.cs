@@ -26,11 +26,12 @@ public class MainManager : MonoBehaviour
     public GameObject enemyParent;
     private Coroutine spawnRoutine;
     public GameObject shopManagerObj;
+    public List<GameObject> enemies;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        enemies = new List<GameObject>();
     }
 
     public void StartLevel(){
@@ -95,8 +96,20 @@ public class MainManager : MonoBehaviour
             Debug.Log("Triggering the next level");
             level += 1;
             StopCoroutine(spawnRoutine);
+            destroyEnemies();
             nextLevel.TriggerEvent();
         }
+    }
+
+    public void destroyEnemies() {
+        Debug.Log("Destroying Enemies");
+        foreach (GameObject enemy in enemies)
+        {
+            if (enemy != null) {
+                Destroy(enemy);
+            }
+        }
+    
     }
 
     [ContextMenu("Skip Level")]
@@ -106,6 +119,7 @@ public class MainManager : MonoBehaviour
         Debug.Log("Triggering the next level");
         level += 1;
         StopCoroutine(spawnRoutine);
+        destroyEnemies();
         nextLevel.TriggerEvent();
     }
     
@@ -129,18 +143,19 @@ public class MainManager : MonoBehaviour
             foreach  (float e in enemySpawnRate){
                 Debug.Log(e);
             }
-            
+
+            GameObject cloneObj;
             if (temp<enemySpawnRate[0] && lvlCost>= 50){
-                Instantiate(tankyEnemy, new Vector3(UnityEngine.Random.Range(x-12f,x+12f), y, 0), Quaternion.identity, enemyParent.transform);
+                cloneObj = Instantiate(tankyEnemy, new Vector3(UnityEngine.Random.Range(x-12f,x+12f), y, 0), Quaternion.identity, enemyParent.transform);
                 lvlCost -= 50;
             }else if(temp < enemySpawnRate[1] && lvlCost >= 5){
-                Instantiate(fastEnemy, new Vector3(UnityEngine.Random.Range(x-12f,x+12f), y, 0), Quaternion.identity, enemyParent.transform);
+                cloneObj = Instantiate(fastEnemy, new Vector3(UnityEngine.Random.Range(x-12f,x+12f), y, 0), Quaternion.identity, enemyParent.transform);
                 lvlCost -= 5;
             }else{
-                Instantiate(enemy, new Vector3(UnityEngine.Random.Range(x-12f,x+12f), y, 0), Quaternion.identity, enemyParent.transform);
+                cloneObj = Instantiate(enemy, new Vector3(UnityEngine.Random.Range(x-12f,x+12f), y, 0), Quaternion.identity, enemyParent.transform);
                 lvlCost -= 1;
             }
-            
+            enemies.Add(cloneObj);
         }
     }
 
