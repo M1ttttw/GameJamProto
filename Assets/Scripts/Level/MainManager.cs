@@ -97,6 +97,7 @@ public class MainManager : MonoBehaviour
             level += 1;
             StopCoroutine(spawnRoutine);
             destroyEnemies();
+            enemyDeathScore = 0;
             nextLevel.TriggerEvent();
         }
     }
@@ -109,7 +110,7 @@ public class MainManager : MonoBehaviour
                 Destroy(enemy);
             }
         }
-    
+        enemies.Clear();
     }
 
     [ContextMenu("Skip Level")]
@@ -120,6 +121,7 @@ public class MainManager : MonoBehaviour
         level += 1;
         StopCoroutine(spawnRoutine);
         destroyEnemies();
+        enemyDeathScore = 0;
         nextLevel.TriggerEvent();
     }
     

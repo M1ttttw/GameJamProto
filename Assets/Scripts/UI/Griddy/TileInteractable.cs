@@ -33,6 +33,9 @@ public class TileInteractable : MonoBehaviour
         if (gridObjInTile != null && !drag)
         {
             gridObjInTile.transform.position = transform.position;
+            if (prefabInTile != null) {
+                prefabInTile.transform.position = transform.position;
+            }
         }
     }
     private void OnMouseEnter()
@@ -92,6 +95,9 @@ public class TileInteractable : MonoBehaviour
                         released_tile.shopItmInTile = shopItmInTile;
                         shopItmInTile = null;
 
+                        released_tile.prefabInTile = prefabInTile;
+                        prefabInTile = null;
+
                         Debug.Log("Moved object");
                     }
                     else
@@ -101,12 +107,17 @@ public class TileInteractable : MonoBehaviour
                         GameObject temp2GridObj = released_tile.gridObjInTile;
                         ShopItem temp1ShopItm = shopItmInTile;
                         ShopItem temp2ShopItm = released_tile.shopItmInTile;
+                        GameObject temp1prefab = prefabInTile;
+                        GameObject temp2prefab = released_tile.prefabInTile;
 
                         released_tile.gridObjInTile = temp1GridObj;
                         gridObjInTile = temp2GridObj;
 
                         released_tile.shopItmInTile = temp1ShopItm;
                         shopItmInTile = temp2ShopItm;
+
+                        released_tile.prefabInTile = temp1prefab;
+                        prefabInTile = temp2prefab;
 
                         Debug.Log("Swapped Object");
                     }
@@ -150,6 +161,11 @@ public class TileInteractable : MonoBehaviour
                 gridObjInTile = null;
                 parentGrid.shopManager.soldItem(shopItmInTile);
                 shopItmInTile = null;
+                if (prefabInTile != null) {
+                    GameObject prefabObj = prefabInTile;
+                    prefabInTile = null;
+                    Destroy(prefabObj);
+                }
             }
         }
     }

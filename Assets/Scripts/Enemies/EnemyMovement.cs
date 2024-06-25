@@ -16,6 +16,9 @@ public class EnemyMovement : MonoBehaviour
     private Vector3 anchorPosition;
     public bool hasTarget = false;
     private IEnumerator strafe;
+    public int movementSpeed;
+    public int strafeSpeed;
+
     void Start()
     {
         //on creation we find closest car and nav to it
@@ -54,7 +57,7 @@ public class EnemyMovement : MonoBehaviour
     public IEnumerator Strafe()
     {
         Debug.Log("strafe");
-        agent.speed = 1;
+        agent.speed = strafeSpeed;
         while (true){
             //set dest to a random nearby location
             agent.SetDestination(new Vector3(this.transform.position.x+UnityEngine.Random.Range(-strafeDistance, strafeDistance),this.transform.position.y+UnityEngine.Random.Range(-strafeDistance, strafeDistance),this.transform.position.z));
@@ -76,7 +79,7 @@ public class EnemyMovement : MonoBehaviour
     public void reTarget(){
         hasTarget = false;
         Debug.Log("retarget");
-        agent.speed = 1f;
+        agent.speed = movementSpeed;
         StopCoroutine(strafe);
         closestCar=FindClosestCar();
         agent.SetDestination(closestCar.transform.position);

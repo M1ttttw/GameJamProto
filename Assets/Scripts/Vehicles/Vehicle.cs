@@ -23,9 +23,11 @@ public abstract class Vehicle : MonoBehaviour
     public float armor;
 
     // Audio
-    public AudioSource shootPlayer;
-    public AudioSource hitPlayer;
-    public AudioSource deathPlayer;
+    public AudioClip shootClip;
+    public AudioClip hitClip;
+    public AudioClip deathClip;
+
+    public AudioManager audioManager;
 
     // Send a bullet towards this target
     public abstract void attack(GameObject target);

@@ -12,6 +12,7 @@ public class DefaultEnemy : Vehicle
     void Start()
     {
         scoreKeeper = GameObject.Find("Manager").GetComponent<MainManager>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     // Update is called once per frame
@@ -20,7 +21,8 @@ public class DefaultEnemy : Vehicle
         
     }
     public override void onBulletImpact(float dmg, bool isAP){
-        hitPlayer.Play();
+        // hitPlayer.Play();
+        audioManager.playClip(hitClip);
         if (armor>0){
             if(isAP){
                 armor -= dmg;
@@ -30,7 +32,8 @@ public class DefaultEnemy : Vehicle
         }else{
             health -= dmg;
             if (health <= 0){
-                deathPlayer.Play();
+                // deathPlayer.Play();
+                audioManager.playClip(deathClip);
                 scoreKeeper.enemyDeathScore += score;
                 Destroy(this.gameObject);
                 onEnemyDeath.TriggerEvent();
@@ -39,7 +42,8 @@ public class DefaultEnemy : Vehicle
     }
 
     public override void attack(GameObject target) {
-        shootPlayer.Play();
+        // shootPlayer.Play();
+        audioManager.playClip(shootClip);
         Vector3 global_position = target.transform.position;
 
         // Create a copy of a bullet, and store it for later use.
