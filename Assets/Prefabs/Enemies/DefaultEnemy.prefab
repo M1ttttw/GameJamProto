@@ -263,8 +263,8 @@ MonoBehaviour:
   strafeDistance: 0.5
   closestCar: {fileID: 0}
   hasTarget: 0
-  movementSpeed: 0
-  strafeSpeed: 0
+  movementSpeed: 1
+  strafeSpeed: 7
 --- !u!114 &2082226937342786185
 MonoBehaviour:
   m_ObjectHideFlags: 0

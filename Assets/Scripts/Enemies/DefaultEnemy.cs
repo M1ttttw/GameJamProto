@@ -21,7 +21,6 @@ public class DefaultEnemy : Vehicle
         
     }
     public override void onBulletImpact(float dmg, bool isAP){
-        // hitPlayer.Play();
         audioManager.playClip(hitClip);
         if (armor>0){
             if(isAP){
@@ -32,7 +31,6 @@ public class DefaultEnemy : Vehicle
         }else{
             health -= dmg;
             if (health <= 0){
-                // deathPlayer.Play();
                 audioManager.playClip(deathClip);
                 scoreKeeper.enemyDeathScore += score;
                 Destroy(this.gameObject);
@@ -42,7 +40,6 @@ public class DefaultEnemy : Vehicle
     }
 
     public override void attack(GameObject target) {
-        // shootPlayer.Play();
         audioManager.playClip(shootClip);
         Vector3 global_position = target.transform.position;
 

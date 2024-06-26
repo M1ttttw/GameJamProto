@@ -15,6 +15,7 @@ public class AudioPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Destroy itself once the audio is done playing.
         if (!audioSource.isPlaying) {
             Destroy(this.gameObject);
         }

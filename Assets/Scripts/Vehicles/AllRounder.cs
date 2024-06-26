@@ -21,7 +21,6 @@ public class AllRounder : Vehicle
 
     }
     public override void onBulletImpact(float dmg, bool isAP){
-        // hitPlayer.Play();
         audioManager.playClip(hitClip);
         if (armor>0){
             if(isAP){
@@ -32,8 +31,6 @@ public class AllRounder : Vehicle
         }else{
             health -= dmg;
             if (health <= 0){
-                Debug.Log("Cars dead, play death sound");
-                // deathPlayer.Play();
                 audioManager.playClip(deathClip);
                 onCarDeath.TriggerEvent();
                 Destroy(this.gameObject);
@@ -42,7 +39,6 @@ public class AllRounder : Vehicle
     }
     public override void attack(GameObject target)
     {
-        // shootPlayer.Play();
         audioManager.playClip(shootClip);
         Vector3 global_position = target.transform.position;
 
